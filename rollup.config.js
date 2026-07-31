@@ -39,6 +39,7 @@ export default [
       format: "es",
       //inlineDynamicImports: true,
     },
+    context: "window", // Imposta il contesto globale su "window" per evitare problemi con "this"
     plugins: [...plugins],
   },
 ];

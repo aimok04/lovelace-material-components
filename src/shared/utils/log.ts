@@ -2,6 +2,31 @@ import { html, TemplateResult } from "lit";
 import { localize } from "../../localize/localize";
 import { UPGRADE_URL } from "./utils";
 
+export const logInit = (text: string) => {
+  /* eslint no-console: 0 */
+  console.info(
+    `%c⚙️ Material Home Assistant Components %c ${text}`,
+    textStyle,
+    versionStyle,
+  );
+};
+
+const textStyle = `
+      color: #6750A4;
+      font-weight: 600;
+      background: #EADDFF;
+      padding: 2px 4px;
+      border-radius: 4px;
+    `;
+
+const versionStyle = `
+      color: #FFFFFF;
+      font-weight: 600;
+      background: #625B71;
+      padding: 2px 4px;
+      border-radius: 4px;
+    `;
+
 export function getCardVersion(): TemplateResult {
   const style = `.version {
       font-size: 12px !important;

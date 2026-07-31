@@ -17,13 +17,9 @@ import { MaterialUsersCard } from "./material-users/material-users-card";
 import { MaterialMenuCard } from "./material-menu/material-menu-card";
 import { MaterialMenuCardEditor } from "./material-menu/material-menu-card-editor";
 import { MaterialUsersCardEditor } from "./material-users/material-users-card-editor";
+import { logInit } from "./shared/utils/log";
 
-/* eslint no-console: 0 */
-console.info(
-  `%c Material Home Components %c ${localize("common.version")} ${CARD_VERSION}`,
-  "color: orange; font-weight: bold; background: black",
-  "color: white; font-weight: bold; background: dimgray",
-);
+logInit(localize("common.version") + " " + CARD_VERSION);
 
 /** Material Slider */
 customElements.define("material-slider-card", MaterialSliderCard);
