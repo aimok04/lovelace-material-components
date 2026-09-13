@@ -276,6 +276,17 @@ export class MaterialSliderCardEditor
           />
         </div>
 
+        <div class="switch-row">
+          <span class="switch-label"
+            >${localize("material_slider_card.colorize")}</span
+          >
+          <ha-switch
+            .checked=${this._config.colorize ?? false}
+            configValue="colorize"
+            @change=${(ev: Event) => _valueChanged(ev, this)}
+          />
+        </div>
+
         <ha-selector
           .hass=${this.hass}
           label="${localize("actions.tap_action_title")}"

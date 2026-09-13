@@ -126,7 +126,8 @@
     "entity": "Entity to control",
     "icon": "Custom icon (if left empty, changes automatically based on On/Off state)",
     "percentage": "Display value as percentage",
-    "bold_text": "Bold style for the text"
+    "bold_text": "Bold style for the text",
+    "colorize": "Colorize slider based on the light's color"
   },
   "material_lights_card": {
     "on_text": "Text for Lights ON",

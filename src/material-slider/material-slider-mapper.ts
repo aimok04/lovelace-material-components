@@ -156,6 +156,35 @@ export function setSliderColor(
   _setStyleProperty("--bsc-height", _config.height, style, (h) => `${h}px`);
 }
 
+/**
+ * Extracts the hue (0-360) from an [r, g, b] triplet, used to derive a
+ * Material-like tonal background/text pair for any light color.
+ */
+export function rgbToHue([r, g, b]: number[]): number {
+  const rn = r / 255;
+  const gn = g / 255;
+  const bn = b / 255;
+  const max = Math.max(rn, gn, bn);
+  const min = Math.min(rn, gn, bn);
+  const delta = max - min;
+
+  if (delta === 0) return 0;
+
+  let hue: number;
+  switch (max) {
+    case rn:
+      hue = ((gn - bn) / delta) % 6;
+      break;
+    case gn:
+      hue = (bn - rn) / delta + 2;
+      break;
+    default:
+      hue = (rn - gn) / delta + 4;
+  }
+  hue *= 60;
+  return hue < 0 ? hue + 360 : hue;
+}
+
 export function _setStyleProperty(
   name: string,
   value: any,

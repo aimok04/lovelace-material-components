@@ -13,7 +13,7 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { LitElement, html, CSSResult, TemplateResult, css } from "lit";
 import { applyRippleEffect } from "../animations";
 import { material_color } from "../shared/color";
-import { setSliderColorCard } from "./material-slider-mapper";
+import { rgbToHue, setSliderColorCard } from "./material-slider-mapper";
 import {
   isDeviceOn,
   isOfflineState,
@@ -423,22 +423,53 @@ export class MaterialSliderCard extends LitElement {
   }
 
   _updateColors(): void {
+    const theme: "dark" | "light" = this._hass?.themes?.darkMode
+      ? "dark"
+      : "light";
+
     let color = "var(--bsc-color)";
-    let brightness = "0%";
-    let brightnessUI = "50%";
+    let brightnessFilter = "100%";
     let isOn = false;
 
     if (this._state) {
       if (this._status == OnStates.ON) {
-        const stateColor = this._state.attributes?.rgb_color ?? [255, 255, 255];
-        const stateBrightness = this._state.attributes?.brightness ?? 255;
         isOn = true;
-        if (stateColor) {
-          color = `rgb(${stateColor.join(",")})`;
-        }
-        if (stateBrightness) {
-          brightness = `${Math.ceil((100 * stateBrightness) / 255)}%`;
-          brightnessUI = `${Math.ceil((100 * stateBrightness) / 510 + 50)}%`;
+        const rgbColor = this._state.attributes?.rgb_color;
+
+        if (rgbColor) {
+          // True color-capable light: reflect its actual color, dimmed to match its brightness
+          const stateBrightness = this._state.attributes?.brightness ?? 255;
+          color = `rgb(${rgbColor.join(",")})`;
+          brightnessFilter = `${Math.ceil((100 * stateBrightness) / 510 + 50)}%`;
+
+          if (this._config.colorize) {
+            // Tint the whole card (background + text/icon) to match the light's
+            // hue too, instead of leaving them on the generic Material amber tone.
+            const hue = rgbToHue(rgbColor);
+            const background =
+              theme === "dark"
+                ? `hsl(${hue}, 15%, 18%)`
+                : `hsl(${hue}, 85%, 88%)`;
+            // Light-theme lightness is tuned to 18% (not 24%) because at fixed HSL
+            // lightness, perceived/relative luminance still varies a lot by hue (yellows
+            // read much brighter than blues at the same L) - 18% keeps >= 4.5:1 WCAG AA
+            // contrast against the background across the full hue range, verified
+            // numerically; 24% dropped as low as ~4.2:1 around yellow hues.
+            const text =
+              theme === "dark"
+                ? `hsl(${hue}, 90%, 78%)`
+                : `hsl(${hue}, 100%, 18%)`;
+
+            this.style.setProperty("--bsc-background", background);
+            this.style.setProperty("--bsc-name-color", text);
+            this.style.setProperty("--bsc-icon-color", text);
+            this.style.setProperty("--bsc-percentage-color", text);
+          }
+        } else {
+          // No color info available (dimmer-only / color-temperature lights): fall back to
+          // the same Material "on" tone the non-colorized slider already uses, instead of a
+          // flat white fill that clashes with the rest of the card's theming.
+          color = (material_color as any)[theme].on.light.slider;
         }
       } else if (this._status == OnStates.OPEN) {
         isOn = true;
@@ -461,8 +492,7 @@ export class MaterialSliderCard extends LitElement {
       } else percentage && (percentage.innerText = localize("common.offline"));
     }
     this.style.setProperty("--bsc-entity-color", color);
-    this.style.setProperty("--bsc-brightness", brightness);
-    this.style.setProperty("--bsc-brightness-ui", brightnessUI);
+    this.style.setProperty("--bsc-brightness-ui", brightnessFilter);
     if (this._config.icon_color && isOn) {
       this.style.setProperty("--bsc-icon-color", this._config.icon_color);
     }
@@ -721,8 +751,7 @@ export class MaterialSliderCard extends LitElement {
         --bsc-background: var(--card-background-color, #aaaaaa);
         --bsc-slider-color: var(--paper-slider-active-color, #f9d2b0);
         --bsc-percent: 0%;
-        --bsc-brightness: 50%;
-        --bsc-brightness-ui: 50%;
+        --bsc-brightness-ui: 100%;
         --bsc-color: var(--paper-item-icon-color);
         --bsc-off-color: var(--paper-item-icon-color);
         --bsc-entity-color: var(--bsc-color);

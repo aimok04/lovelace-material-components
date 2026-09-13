@@ -126,7 +126,8 @@
     "entity": "Zu steuernde Entität",
     "icon": "Benutzerdefiniertes Symbol (wenn leer, ändert sich automatisch je nach On/Off-Zustand)",
     "percentage": "Wert in Prozent anzeigen",
-    "bold_text": "Text fett formatieren"
+    "bold_text": "Text fett formatieren",
+    "colorize": "Schieberegler entsprechend der Lichtfarbe einfärben"
   },
   "material_lights_card": {
     "on_text": "Text für eingeschaltete Lichter",

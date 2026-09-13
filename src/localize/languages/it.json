@@ -126,7 +126,8 @@
     "entity": "Entità da controllare",
     "icon": "Icona personalizzata (se vuota, cambia automaticamente in base allo stato On/Off)",
     "percentage": "Mostra la percentuale di valore",
-    "bold_text": "Testo con stile in grassetto"
+    "bold_text": "Testo con stile in grassetto",
+    "colorize": "Colora lo slider in base al colore della luce"
   },
   "material_lights_card": {
     "on_text": "Testo per Luci Accese",
