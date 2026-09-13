@@ -1,6 +1,5 @@
 import { html, TemplateResult } from "lit";
-import { localize } from "../../localize/localize";
-import { UPGRADE_URL } from "./utils";
+import { CARD_VERSION } from "./utils";
 
 export const logInit = (text: string) => {
   /* eslint no-console: 0 */
@@ -53,16 +52,6 @@ export function getCardVersion(): TemplateResult {
       ${style}
     </style>
     <h4 class="version">
-      ${localize("upgrade.message")}
-      <span class="version-number"
-        ><a
-          href="${UPGRADE_URL}"
-          target="_blank"
-          style="text-decoration: none;"
-          rel="noopener noreferrer"
-        >
-          ${localize("upgrade.button")}
-        </a></span
-      >
+      <span class="version-number">v${CARD_VERSION}</span>
     </h4>`;
 }

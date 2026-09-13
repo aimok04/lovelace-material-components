@@ -562,17 +562,7 @@ const ce=e=>(t,i)=>{void 0!==i?i.addInitializer(()=>{customElements.define(e,t)}
       ${".version {\n      font-size: 12px !important;\n      color: var(--primary-text-color) !important;\n      background: rgba(0, 0, 0, 0.1);\n      padding: 8px 16px;\n      border-radius: 32px;\n      display: flex;\n      align-items: center;\n    }\n\n    .version-number {\n      font-size: 10px;\n      background: rgb(0, 103, 155);\n      padding: 0px 8px;\n      border-radius: 12px;\n      margin-right: -6px;\n      float: right;\n      color: white;\n      height: 20px;\n      align-content: center;\n    }"}
     </style>
     <h4 class="version">
-      ${fi("upgrade.message")}
-      <span class="version-number"
-        ><a
-          href="${Ri}"
-          target="_blank"
-          style="text-decoration: none;"
-          rel="noopener noreferrer"
-        >
-          ${fi("upgrade.button")}
-        </a></span
-      >
+      <span class="version-number">v${zi}</span>
     </h4>`}let Ka=class extends re{constructor(){super(...arguments),this._config=Fa}setConfig(e){this._config=Object.assign({},e)}async firstUpdated(){const e=await window.loadCardHelpers(),t=await e.createCardElement({type:"entities",entities:[]});await t.constructor.getConfigElement()}render(){var e,t,i,n;return this._config&&this.hass?H`
       <div class="form">
         <span class="switch-label"
