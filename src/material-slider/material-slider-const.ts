@@ -23,6 +23,9 @@ export const DEFAULT_CONFIG: MaterialSliderCardConfig = {
   hold_action: {
     action: "more-info",
   },
+  arrow_action: {
+    action: "more-info",
+  },
   hold_time: HOLD_TIME,
   settle_time: SETTLE_TIME,
   min_slide_time: MIN_SLIDE_TIME,
@@ -67,4 +70,5 @@ export interface MaterialSliderCardConfig extends LovelaceCardConfig {
   settle_time: number;
   tap_action: ActionConfig;
   hold_action?: ActionConfig;
+  arrow_action?: ActionConfig;
 }

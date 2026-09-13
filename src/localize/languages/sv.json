@@ -40,6 +40,7 @@
     "automatic_action": "Aktivera automatiska åtgärder",
     "tap_action_title": "Åtgärd vid klick",
     "hold_action_title": "Åtgärd vid långtryck",
+    "arrow_action_title": "Åtgärd vid pilknapp",
     "double_tap_action_title": "Åtgärd vid dubbelklick",
     "toggle": "Enkelt klick (På/Av)",
     "more_info": "Visa mer info om entitet",

@@ -40,6 +40,7 @@
     "automatic_action": "Attiva azioni automatiche",
     "tap_action_title": "Azione al clic",
     "hold_action_title": "Azione alla pressione prolungata",
+    "arrow_action_title": "Azione sul pulsante freccia",
     "double_tap_action_title": "Azione al doppio clic",
     "toggle": "Clic singolo (Accensione/Spegnimento)",
     "more_info": "Mostra info entità",

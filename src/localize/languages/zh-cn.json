@@ -40,6 +40,7 @@
     "automatic_action": "启用自动操作",
     "tap_action_title": "点击操作",
     "hold_action_title": "长按操作",
+    "arrow_action_title": "箭头按钮操作",
     "double_tap_action_title": "双击操作",
     "toggle": "单击（开/关）",
     "more_info": "显示实体信息",

@@ -40,6 +40,7 @@
     "automatic_action": "Activer actions automatiques",
     "tap_action_title": "Action au clic",
     "hold_action_title": "Action lors du maintien",
+    "arrow_action_title": "Action sur le bouton flèche",
     "double_tap_action_title": "Action au double clic",
     "toggle": "Clic unique (Marche/Arrêt)",
     "more_info": "Afficher infos entité",

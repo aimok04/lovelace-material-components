@@ -40,6 +40,7 @@
     "automatic_action": "Activar acciones automáticas",
     "tap_action_title": "Acción al clic",
     "hold_action_title": "Acción al mantener presionado",
+    "arrow_action_title": "Acción en el botón de flecha",
     "double_tap_action_title": "Acción al doble clic",
     "toggle": "Clic único (Encender/Apagar)",
     "more_info": "Mostrar info de entidad",

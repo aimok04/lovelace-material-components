@@ -40,6 +40,7 @@
     "automatic_action": "Habilitar ações automáticas",
     "tap_action_title": "Ação ao tocar",
     "hold_action_title": "Ação ao manter pressionado",
+    "arrow_action_title": "Ação no botão de seta",
     "double_tap_action_title": "Ação ao tocar duas vezes",
     "toggle": "Clique simples (Ligar/Desligar)",
     "more_info": "Mostrar informações da entidade",

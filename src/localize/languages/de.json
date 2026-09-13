@@ -40,6 +40,7 @@
     "automatic_action": "Automatische Aktionen aktivieren",
     "tap_action_title": "Aktion beim Klicken",
     "hold_action_title": "Aktion beim Halten",
+    "arrow_action_title": "Aktion bei Pfeil-Schaltfläche",
     "double_tap_action_title": "Aktion beim Doppelklick",
     "toggle": "Einfacher Klick (An/Aus)",
     "more_info": "Entitätsinfo anzeigen",

@@ -40,6 +40,7 @@
     "automatic_action": "Enable automatic actions",
     "tap_action_title": "Action on tap",
     "hold_action_title": "Action on hold",
+    "arrow_action_title": "Action on arrow button",
     "double_tap_action_title": "Action on double tap",
     "toggle": "Single click (On/Off)",
     "more_info": "Show entity info",

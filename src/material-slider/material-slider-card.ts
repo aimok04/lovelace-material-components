@@ -22,6 +22,7 @@ import {
 } from "../shared/states";
 import { getIcon } from "../shared/mapper";
 import { ControlType, DomainType } from "../shared/types";
+import { handleAction } from "../shared/actions";
 
 export class MaterialSliderCard extends LitElement {
   // @property({ attribute: false }) public hass!: HomeAssistant;
@@ -640,6 +641,29 @@ export class MaterialSliderCard extends LitElement {
     applyRippleEffect(event.currentTarget as HTMLElement, event);
   }
 
+  private _onArrowPointerDown(event: PointerEvent): void {
+    // Keep the arrow button independent from the slide/tap/hold gesture
+    // (SlideGesture listens on the whole card host, not just #container).
+    event.stopPropagation();
+  }
+
+  private _onArrowClick(event: MouseEvent): void {
+    event.stopPropagation();
+    applyRippleEffect(event.currentTarget as HTMLElement, event);
+    if (navigator.vibrate) {
+      navigator.vibrate(60);
+    }
+
+    if (!this._config || !this._hass) return;
+
+    handleAction(
+      this,
+      this._hass,
+      this._config,
+      this._config.arrow_action ?? DEFAULT_CONFIG.arrow_action,
+    );
+  }
+
   protected updated(): void {
     this.containerWidth =
       this.shadowRoot?.getElementById("container")?.clientWidth ?? 0;
@@ -681,9 +705,7 @@ export class MaterialSliderCard extends LitElement {
       <ha-card
         id="container"
         tabindex="0"
-        style="position: relative; ${isOffline
-          ? "padding: 12px 35px 12px 12px;"
-          : "padding: 12px 12px;"}"
+        style="position: relative; padding: 12px 35px 12px 12px;"
         @mousedown=${this._onClick}
       >
         <div id="slider" class="animate ${colorize ? "colorize" : ""}"></div>
@@ -716,7 +738,19 @@ export class MaterialSliderCard extends LitElement {
                 title="Offline"
               ></ha-icon>
             `
-          : ""}
+          : html`
+              <div
+                id="arrow-btn"
+                title="${localize("common.info_device")}"
+                @pointerdown=${(e: PointerEvent) => this._onArrowPointerDown(e)}
+                @click=${(e: MouseEvent) => this._onArrowClick(e)}
+              >
+                <ha-icon
+                  icon="m3rf:arrow-forward-ios"
+                  class="chevron"
+                ></ha-icon>
+              </div>
+            `}
       </ha-card>
     `;
   }
@@ -864,8 +898,31 @@ export class MaterialSliderCard extends LitElement {
         transition: color 0.3s ease-out;
       }
 
+      #arrow-btn {
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #arrow-btn .chevron {
+        color: var(--bsc-icon-color);
+        --mdc-icon-size: 15px;
+        pointer-events: none;
+      }
+
       @media (max-width: 420px) {
-        #icon_offline {
+        #icon_offline,
+        #arrow-btn {
           right: 15px;
         }
       }

@@ -78,7 +78,23 @@ export class MaterialSliderCardEditor
     this._setAction("hold_action", value);
   };
 
-  private _setAction(which: "tap_action" | "hold_action", action: string) {
+  private _onArrowSelected = (ev: CustomEvent): void => {
+    if (!this._config) return;
+
+    const value = ev.detail.value;
+    const currentValue = this._getActionValue(
+      this._config.arrow_action,
+      "more-info",
+    );
+    if (value === currentValue) return;
+
+    this._setAction("arrow_action", value);
+  };
+
+  private _setAction(
+    which: "tap_action" | "hold_action" | "arrow_action",
+    action: string,
+  ) {
     const defaults: Record<string, any> = {
       toggle: { action: "toggle" },
       "more-info": { action: "more-info" },
@@ -106,7 +122,7 @@ export class MaterialSliderCardEditor
   }
 
   private _setActionValue(
-    which: "tap_action" | "hold_action",
+    which: "tap_action" | "hold_action" | "arrow_action",
     key: string,
     value: any,
   ) {
@@ -321,6 +337,24 @@ export class MaterialSliderCardEditor
 
         ${this._renderExtraField(this._config.hold_action, (key, value) =>
           this._setActionValue("hold_action", key, value),
+        )}
+
+        <ha-selector
+          .hass=${this.hass}
+          label="${localize("actions.arrow_action_title")}"
+          .selector=${{
+            select: {
+              options: actions,
+              mode: "dropdown",
+            },
+          }}
+          .value=${this._getActionValue(this._config.arrow_action, "more-info")}
+          @value-changed=${this._onArrowSelected}
+        >
+        </ha-selector>
+
+        ${this._renderExtraField(this._config.arrow_action, (key, value) =>
+          this._setActionValue("arrow_action", key, value),
         )}
       </div>
       ${getCardVersion()}
