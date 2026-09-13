@@ -6,7 +6,7 @@ import {
   DEFAULT_CONFIG,
   MaterialClimateCardConfig,
 } from "./material-climate-const";
-import { fireEvent } from "custom-card-helpers";
+import { handleAction } from "../shared/actions";
 import { applyRippleEffect } from "../animations";
 import { material_color } from "../shared/color";
 import { getIcon, getName, mapStateDisplay } from "../shared/mapper";
@@ -67,9 +67,12 @@ export class MaterialClimateCard extends LitElement {
 
     if (!this._config || !this.hass) return;
 
-    const entityId = this._config.entity;
-
-    fireEvent(this, "hass-more-info", { entityId });
+    handleAction(
+      this,
+      this.hass,
+      this._config,
+      this._config.tap_action ?? DEFAULT_CONFIG.tap_action,
+    );
   }
 
   private async _adjustTemp(delta: number): Promise<void> {

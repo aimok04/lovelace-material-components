@@ -1,6 +1,11 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { HomeAssistant, LovelaceCardEditor } from "custom-card-helpers";
+import {
+  HomeAssistant,
+  LovelaceCardEditor,
+  NavigateActionConfig,
+  UrlActionConfig,
+} from "custom-card-helpers";
 import { localize } from "../localize/localize";
 import {
   DEFAULT_CONFIG,
@@ -30,6 +35,99 @@ export class MaterialClimateCardEditor
     await card.constructor.getConfigElement();
   }
 
+  // Returns `fallback` if absent; a string action is used as-is, an object uses its .action field.
+  private _getActionValue(a?: any, fallback: string = "more-info"): string {
+    if (!a) return fallback;
+    return typeof a === "string" ? a : (a.action ?? fallback);
+  }
+
+  private _onTapSelected(ev: CustomEvent): void {
+    if (!this._config || !this.hass) return;
+
+    const value = ev.detail.value;
+    const currentValue = this._getActionValue(this._config.tap_action);
+    if (value === currentValue) return;
+
+    const defaults: Record<string, any> = {
+      toggle: { action: "toggle" },
+      "more-info": { action: "more-info" },
+      navigate: { action: "navigate", navigation_path: "/" },
+      url: { action: "url", url_path: "" },
+      none: { action: "none" },
+    };
+
+    const newConfig = {
+      ...this._config,
+      tap_action: defaults[value] || { action: value },
+    };
+
+    this._config = newConfig;
+    this.dispatchEvent(
+      new CustomEvent("config-changed", {
+        detail: { config: newConfig },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private _setActionValue(key: string, value: any) {
+    let action: any = this._config.tap_action;
+
+    if (typeof action === "string") {
+      action = { action };
+    }
+
+    const updated = { ...action, [key]: value };
+
+    this._config = { ...this._config, tap_action: updated };
+    this.dispatchEvent(
+      new CustomEvent("config-changed", {
+        detail: { config: this._config },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private _renderExtraField(
+    action: any,
+    onChange: (key: string, value: any) => void,
+  ) {
+    const currentAction = action?.action ?? action; // string or object
+
+    return html`
+      ${currentAction === "navigate"
+        ? html`
+            <ha-selector
+              style="display: block; margin-top: 10px;"
+              .hass=${this.hass}
+              .selector=${{ navigation: {} }}
+              .value=${(action as NavigateActionConfig)?.navigation_path || ""}
+              .label=${localize("actions.navigate")}
+              .configValue=${"navigation_path"}
+              @value-changed=${(e: CustomEvent) =>
+                onChange("navigation_path", e.detail.value)}
+            ></ha-selector>
+          `
+        : ""}
+      ${currentAction === "url"
+        ? html`
+            <ha-selector
+              style="display: block; margin-top: 10px;"
+              .hass=${this.hass}
+              .selector=${{ text: {} }}
+              .value=${(action as UrlActionConfig)?.url_path || ""}
+              .label=${localize("actions.url")}
+              .configValue=${"url_path"}
+              @value-changed=${(e: CustomEvent) =>
+                onChange("url_path", e.detail.value)}
+            ></ha-selector>
+          `
+        : ""}
+    `;
+  }
+
   render(): TemplateResult {
     if (!this._config || !this.hass) {
       return html``;
@@ -50,6 +148,29 @@ export class MaterialClimateCardEditor
       {
         value: "auto",
         label: localize("material_climate_card.auto"),
+      },
+    ];
+
+    const actions = [
+      {
+        value: "toggle",
+        label: localize("actions.toggle"),
+      },
+      {
+        value: "more-info",
+        label: localize("actions.more_info"),
+      },
+      {
+        value: "navigate",
+        label: localize("actions.navigate"),
+      },
+      {
+        value: "url",
+        label: localize("actions.url"),
+      },
+      {
+        value: "none",
+        label: localize("actions.none"),
       },
     ];
 
@@ -164,6 +285,24 @@ export class MaterialClimateCardEditor
           @value-changed=${(ev: CustomEvent) => _valueChanged(ev, this)}
         >
         </ha-selector>
+
+        <ha-selector
+          .hass=${this.hass}
+          label="${localize("actions.tap_action_title")}"
+          .selector=${{
+            select: {
+              options: actions,
+              mode: "dropdown",
+            },
+          }}
+          .value=${this._getActionValue(this._config.tap_action)}
+          @value-changed=${(ev: CustomEvent) => this._onTapSelected(ev)}
+        >
+        </ha-selector>
+
+        ${this._renderExtraField(this._config.tap_action, (key, value) =>
+          this._setActionValue(key, value),
+        )}
       </div>
       ${getCardVersion()}
     `;

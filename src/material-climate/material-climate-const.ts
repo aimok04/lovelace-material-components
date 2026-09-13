@@ -1,4 +1,4 @@
-import { LovelaceCardConfig } from "custom-card-helpers";
+import { ActionConfig, LovelaceCardConfig } from "custom-card-helpers";
 
 export interface MaterialClimateCardConfig extends LovelaceCardConfig {
   type: string;
@@ -10,6 +10,7 @@ export interface MaterialClimateCardConfig extends LovelaceCardConfig {
   use_default_icon?: boolean;
   icon?: string;
   fix_temperature?: "true" | "false" | "auto";
+  tap_action?: ActionConfig;
 }
 
 export const DEFAULT_CONFIG: MaterialClimateCardConfig = {
@@ -19,4 +20,5 @@ export const DEFAULT_CONFIG: MaterialClimateCardConfig = {
   decrease_temp: 1,
   use_material_color: true,
   use_default_icon: true,
+  tap_action: { action: "more-info" },
 };
