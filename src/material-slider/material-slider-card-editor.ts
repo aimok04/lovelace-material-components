@@ -47,17 +47,19 @@ export class MaterialSliderCardEditor
     }
   }
 
-  // Returns "toggle" if absent; a string action is used as-is, an object uses its .action field
-  private _getActionValue(a?: any): string {
-    if (!a) return "toggle";
-    return typeof a === "string" ? a : (a.action ?? "toggle");
+  // Returns `fallback` if absent; a string action is used as-is, an object uses its .action field.
+  // `fallback` must match DEFAULT_CONFIG for the field being read (tap_action defaults to
+  // "toggle", hold_action to "more-info") so the dropdown reflects what the card actually runs.
+  private _getActionValue(a?: any, fallback: string = "toggle"): string {
+    if (!a) return fallback;
+    return typeof a === "string" ? a : (a.action ?? fallback);
   }
 
   private _onTapSelected(ev: CustomEvent): void {
     if (!this._config || !this.hass) return;
 
     const value = ev.detail.value;
-    const currentValue = this._getActionValue(this._config.tap_action);
+    const currentValue = this._getActionValue(this._config.tap_action, "toggle");
     if (value === currentValue) return;
 
     this._setAction("tap_action", value);
@@ -67,7 +69,10 @@ export class MaterialSliderCardEditor
     if (!this._config) return;
 
     const value = ev.detail.value;
-    const currentValue = this._getActionValue(this._config.hold_action);
+    const currentValue = this._getActionValue(
+      this._config.hold_action,
+      "more-info",
+    );
     if (value === currentValue) return;
 
     this._setAction("hold_action", value);
@@ -280,7 +285,7 @@ export class MaterialSliderCardEditor
               mode: "dropdown",
             },
           }}
-          .value=${this._getActionValue(this._config.tap_action)}
+          .value=${this._getActionValue(this._config.tap_action, "toggle")}
           @value-changed=${(ev: CustomEvent) => this._onTapSelected(ev)}
         >
         </ha-selector>
@@ -298,7 +303,7 @@ export class MaterialSliderCardEditor
               mode: "dropdown",
             },
           }}
-          .value=${this._getActionValue(this._config.hold_action)}
+          .value=${this._getActionValue(this._config.hold_action, "more-info")}
           @value-changed=${this._onHoldSelected}
         >
         </ha-selector>

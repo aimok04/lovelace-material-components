@@ -1688,7 +1688,7 @@ const ce=e=>(t,i)=>{void 0!==i?i.addInitializer(()=>{customElements.define(e,t)}
       color: var(--error-color, #d32f2f);
       font-size: 0.9rem;
     }
-  `,e([he({attribute:!1})],ro.prototype,"hass",void 0),e([pe()],ro.prototype,"_config",void 0),e([pe()],ro.prototype,"_configLoaded",void 0),ro=e([ce("material-button-card-editor")],ro);let lo=class extends re{constructor(){super(...arguments),this._config=Za,this._onHoldSelected=e=>{if(!this._config)return;const t=e.detail.value;t!==this._getActionValue(this._config.hold_action)&&this._setAction("hold_action",t)}}setConfig(e){this._config=Object.assign({},e)}async firstUpdated(){const e=await window.loadCardHelpers(),t=await e.createCardElement({type:"entities",entities:[]});await t.constructor.getConfigElement()}setEntityFilter(){switch(this._config.control_type){case Ci.LIGHT:return["light"];case Ci.COVER:return["cover"];default:return}}_getActionValue(e){var t;return e?"string"==typeof e?e:null!==(t=e.action)&&void 0!==t?t:"toggle":"toggle"}_onTapSelected(e){if(!this._config||!this.hass)return;const t=e.detail.value;t!==this._getActionValue(this._config.tap_action)&&this._setAction("tap_action",t)}_setAction(e,t){const i={toggle:{action:"toggle"},"more-info":{action:"more-info"},navigate:{action:"navigate",navigation_path:"/"},url:{action:"url",url_path:""},none:{action:"none"}}[t]||{action:t},n=Object.assign(Object.assign({},this._config),{[e]:i});this._config=n,this.dispatchEvent(new CustomEvent("config-changed",{detail:{config:n},bubbles:!0,composed:!0}))}_setActionValue(e,t,i){let n=this._config[e];"string"==typeof n&&(n={action:n});const a=Object.assign(Object.assign({},n),{[t]:i});this._config=Object.assign(Object.assign({},this._config),{[e]:a}),this.dispatchEvent(new CustomEvent("config-changed",{detail:{config:this._config},bubbles:!0,composed:!0}))}_renderExtraField(e,t){var i;const n=null!==(i=null==e?void 0:e.action)&&void 0!==i?i:e;return H`
+  `,e([he({attribute:!1})],ro.prototype,"hass",void 0),e([pe()],ro.prototype,"_config",void 0),e([pe()],ro.prototype,"_configLoaded",void 0),ro=e([ce("material-button-card-editor")],ro);let lo=class extends re{constructor(){super(...arguments),this._config=Za,this._onHoldSelected=e=>{if(!this._config)return;const t=e.detail.value;t!==this._getActionValue(this._config.hold_action,"more-info")&&this._setAction("hold_action",t)}}setConfig(e){this._config=Object.assign({},e)}async firstUpdated(){const e=await window.loadCardHelpers(),t=await e.createCardElement({type:"entities",entities:[]});await t.constructor.getConfigElement()}setEntityFilter(){switch(this._config.control_type){case Ci.LIGHT:return["light"];case Ci.COVER:return["cover"];default:return}}_getActionValue(e,t="toggle"){var i;return e?"string"==typeof e?e:null!==(i=e.action)&&void 0!==i?i:t:t}_onTapSelected(e){if(!this._config||!this.hass)return;const t=e.detail.value;t!==this._getActionValue(this._config.tap_action,"toggle")&&this._setAction("tap_action",t)}_setAction(e,t){const i={toggle:{action:"toggle"},"more-info":{action:"more-info"},navigate:{action:"navigate",navigation_path:"/"},url:{action:"url",url_path:""},none:{action:"none"}}[t]||{action:t},n=Object.assign(Object.assign({},this._config),{[e]:i});this._config=n,this.dispatchEvent(new CustomEvent("config-changed",{detail:{config:n},bubbles:!0,composed:!0}))}_setActionValue(e,t,i){let n=this._config[e];"string"==typeof n&&(n={action:n});const a=Object.assign(Object.assign({},n),{[t]:i});this._config=Object.assign(Object.assign({},this._config),{[e]:a}),this.dispatchEvent(new CustomEvent("config-changed",{detail:{config:this._config},bubbles:!0,composed:!0}))}_renderExtraField(e,t){var i;const n=null!==(i=null==e?void 0:e.action)&&void 0!==i?i:e;return H`
       ${"navigate"===n?H`
             <ha-selector
               style="display: block; margin-top: 10px;"
@@ -1779,7 +1779,7 @@ const ce=e=>(t,i)=>{void 0!==i?i.addInitializer(()=>{customElements.define(e,t)}
           .hass=${this.hass}
           label="${fi("actions.tap_action_title")}"
           .selector=${{select:{options:a,mode:"dropdown"}}}
-          .value=${this._getActionValue(this._config.tap_action)}
+          .value=${this._getActionValue(this._config.tap_action,"toggle")}
           @value-changed=${e=>this._onTapSelected(e)}
         >
         </ha-selector>
@@ -1790,7 +1790,7 @@ const ce=e=>(t,i)=>{void 0!==i?i.addInitializer(()=>{customElements.define(e,t)}
           .hass=${this.hass}
           label="${fi("actions.hold_action_title")}"
           .selector=${{select:{options:a,mode:"dropdown"}}}
-          .value=${this._getActionValue(this._config.hold_action)}
+          .value=${this._getActionValue(this._config.hold_action,"more-info")}
           @value-changed=${this._onHoldSelected}
         >
         </ha-selector>
