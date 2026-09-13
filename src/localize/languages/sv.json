@@ -128,7 +128,8 @@
     "icon": "Anpassad ikon (om tom, ändras automatiskt baserat på På/Av-status)",
     "percentage": "Visa procentvärde",
     "bold_text": "Fetstilad text",
-    "colorize": "Färglägg skjutreglaget baserat på ljusets färg"
+    "colorize": "Färglägg skjutreglaget baserat på ljusets färg",
+    "show_arrow": "Visa pilknapp (öppnar den konfigurerade pilätgärden)"
   },
   "material_lights_card": {
     "on_text": "Text för tända ljus",

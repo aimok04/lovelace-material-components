@@ -128,7 +128,8 @@
     "icon": "Ícone personalizado (se deixado em branco, muda automaticamente com base no estado Ligado/Desligado)",
     "percentage": "Exibir valor como porcentagem",
     "bold_text": "Estilo negrito para o texto",
-    "colorize": "Colorir o controle deslizante com base na cor da luz"
+    "colorize": "Colorir o controle deslizante com base na cor da luz",
+    "show_arrow": "Mostrar botão de seta (abre a ação de seta configurada)"
   },
   "material_lights_card": {
     "on_text": "Texto para Luzes LIGADAS",

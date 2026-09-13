@@ -128,7 +128,8 @@
     "icon": "Icono personalizado (si está vacío, cambia automáticamente según el estado On/Off)",
     "percentage": "Mostrar valor en porcentaje",
     "bold_text": "Texto en negrita",
-    "colorize": "Colorear el control deslizante según el color de la luz"
+    "colorize": "Colorear el control deslizante según el color de la luz",
+    "show_arrow": "Mostrar botón de flecha (abre la acción de flecha configurada)"
   },
   "material_lights_card": {
     "on_text": "Texto para luces encendidas",

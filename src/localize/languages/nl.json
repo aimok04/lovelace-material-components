@@ -128,7 +128,8 @@
     "icon": "Aangepast pictogram (indien leeg, verandert automatisch op basis van Aan/Uit-status)",
     "percentage": "Waarde als percentage weergeven",
     "bold_text": "Vette tekststijl",
-    "colorize": "Schuifregelaar inkleuren op basis van de lichtkleur"
+    "colorize": "Schuifregelaar inkleuren op basis van de lichtkleur",
+    "show_arrow": "Pijlknop tonen (opent de ingestelde pijlactie)"
   },
   "material_lights_card": {
     "on_text": "Tekst voor Lampen AAN",

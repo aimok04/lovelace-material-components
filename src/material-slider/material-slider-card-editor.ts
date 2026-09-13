@@ -303,6 +303,17 @@ export class MaterialSliderCardEditor
           />
         </div>
 
+        <div class="switch-row">
+          <span class="switch-label"
+            >${localize("material_slider_card.show_arrow")}</span
+          >
+          <ha-switch
+            .checked=${this._config.show_arrow ?? true}
+            configValue="show_arrow"
+            @change=${(ev: Event) => _valueChanged(ev, this)}
+          />
+        </div>
+
         <ha-selector
           .hass=${this.hass}
           label="${localize("actions.tap_action_title")}"
@@ -339,23 +350,31 @@ export class MaterialSliderCardEditor
           this._setActionValue("hold_action", key, value),
         )}
 
-        <ha-selector
-          .hass=${this.hass}
-          label="${localize("actions.arrow_action_title")}"
-          .selector=${{
-            select: {
-              options: actions,
-              mode: "dropdown",
-            },
-          }}
-          .value=${this._getActionValue(this._config.arrow_action, "more-info")}
-          @value-changed=${this._onArrowSelected}
-        >
-        </ha-selector>
+        ${this._config.show_arrow ?? true
+          ? html`
+              <ha-selector
+                .hass=${this.hass}
+                label="${localize("actions.arrow_action_title")}"
+                .selector=${{
+                  select: {
+                    options: actions,
+                    mode: "dropdown",
+                  },
+                }}
+                .value=${this._getActionValue(
+                  this._config.arrow_action,
+                  "more-info",
+                )}
+                @value-changed=${this._onArrowSelected}
+              >
+              </ha-selector>
 
-        ${this._renderExtraField(this._config.arrow_action, (key, value) =>
-          this._setActionValue("arrow_action", key, value),
-        )}
+              ${this._renderExtraField(
+                this._config.arrow_action,
+                (key, value) => this._setActionValue("arrow_action", key, value),
+              )}
+            `
+          : ""}
       </div>
       ${getCardVersion()}
     `;

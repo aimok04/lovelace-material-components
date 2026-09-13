@@ -681,6 +681,7 @@ export class MaterialSliderCard extends LitElement {
     const colorize = (this._config.colorize && true) ?? false;
     const showPercentage = (this._config.show_percentage && true) ?? false;
     const boldText = (this._config.bold_text && true) ?? false;
+    const showArrow = this._config.show_arrow ?? true;
 
     const state = this._hass?.states?.[this._entity];
     const isOffline = isOfflineState(state!.state);
@@ -705,7 +706,9 @@ export class MaterialSliderCard extends LitElement {
       <ha-card
         id="container"
         tabindex="0"
-        style="position: relative; padding: 12px 35px 12px 12px;"
+        style="position: relative; ${isOffline || showArrow
+          ? "padding: 12px 35px 12px 12px;"
+          : "padding: 12px 12px;"}"
         @mousedown=${this._onClick}
       >
         <div id="slider" class="animate ${colorize ? "colorize" : ""}"></div>
@@ -738,19 +741,22 @@ export class MaterialSliderCard extends LitElement {
                 title="Offline"
               ></ha-icon>
             `
-          : html`
-              <div
-                id="arrow-btn"
-                title="${localize("common.info_device")}"
-                @pointerdown=${(e: PointerEvent) => this._onArrowPointerDown(e)}
-                @click=${(e: MouseEvent) => this._onArrowClick(e)}
-              >
-                <ha-icon
-                  icon="m3rf:arrow-forward-ios"
-                  class="chevron"
-                ></ha-icon>
-              </div>
-            `}
+          : showArrow
+            ? html`
+                <div
+                  id="arrow-btn"
+                  title="${localize("common.info_device")}"
+                  @pointerdown=${(e: PointerEvent) =>
+                    this._onArrowPointerDown(e)}
+                  @click=${(e: MouseEvent) => this._onArrowClick(e)}
+                >
+                  <ha-icon
+                    icon="m3rf:arrow-forward-ios"
+                    class="chevron"
+                  ></ha-icon>
+                </div>
+              `
+            : ""}
       </ha-card>
     `;
   }

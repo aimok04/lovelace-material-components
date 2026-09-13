@@ -128,7 +128,8 @@
     "icon": "Benutzerdefiniertes Symbol (wenn leer, ändert sich automatisch je nach On/Off-Zustand)",
     "percentage": "Wert in Prozent anzeigen",
     "bold_text": "Text fett formatieren",
-    "colorize": "Schieberegler entsprechend der Lichtfarbe einfärben"
+    "colorize": "Schieberegler entsprechend der Lichtfarbe einfärben",
+    "show_arrow": "Pfeil-Schaltfläche anzeigen (öffnet die konfigurierte Pfeil-Aktion)"
   },
   "material_lights_card": {
     "on_text": "Text für eingeschaltete Lichter",

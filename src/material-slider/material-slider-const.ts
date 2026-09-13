@@ -63,6 +63,7 @@ export interface MaterialSliderCardConfig extends LovelaceCardConfig {
   icon?: string;
   show_percentage?: boolean;
   bold_text?: boolean;
+  show_arrow?: boolean;
   min: number;
   max: number;
   min_slide_time: number;

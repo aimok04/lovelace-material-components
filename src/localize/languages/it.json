@@ -128,7 +128,8 @@
     "icon": "Icona personalizzata (se vuota, cambia automaticamente in base allo stato On/Off)",
     "percentage": "Mostra la percentuale di valore",
     "bold_text": "Testo con stile in grassetto",
-    "colorize": "Colora lo slider in base al colore della luce"
+    "colorize": "Colora lo slider in base al colore della luce",
+    "show_arrow": "Mostra pulsante freccia (apre l'azione freccia configurata)"
   },
   "material_lights_card": {
     "on_text": "Testo per Luci Accese",

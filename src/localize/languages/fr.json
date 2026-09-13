@@ -128,7 +128,8 @@
     "icon": "Icône personnalisée (si vide, change automatiquement selon l’état On/Off)",
     "percentage": "Afficher la valeur en pourcentage",
     "bold_text": "Texte en gras",
-    "colorize": "Colorer le curseur selon la couleur de la lumière"
+    "colorize": "Colorer le curseur selon la couleur de la lumière",
+    "show_arrow": "Afficher le bouton flèche (ouvre l'action flèche configurée)"
   },
   "material_lights_card": {
     "on_text": "Texte pour lumières allumées",

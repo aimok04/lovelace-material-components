@@ -134,7 +134,8 @@
     "icon": "自定义图标（如果留空，则根据开/关状态自动更改）",
     "percentage": "将数值显示为百分比",
     "bold_text": "使用加粗的文本风格",
-    "colorize": "根据灯光颜色为滑块着色"
+    "colorize": "根据灯光颜色为滑块着色",
+    "show_arrow": "显示箭头按钮（打开已配置的箭头操作）"
   },
   "material_lights_card": {
     "on_text": "灯光开启时的显示文本",
