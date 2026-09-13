@@ -428,7 +428,6 @@ export class MaterialSliderCard extends LitElement {
       : "light";
 
     let color = "var(--bsc-color)";
-    let brightnessFilter = "100%";
     let isOn = false;
 
     if (this._state) {
@@ -436,39 +435,33 @@ export class MaterialSliderCard extends LitElement {
         isOn = true;
         const rgbColor = this._state.attributes?.rgb_color;
 
-        if (rgbColor) {
-          // True color-capable light: reflect its actual color, dimmed to match its brightness
-          const stateBrightness = this._state.attributes?.brightness ?? 255;
-          color = `rgb(${rgbColor.join(",")})`;
-          brightnessFilter = `${Math.ceil((100 * stateBrightness) / 510 + 50)}%`;
+        if (rgbColor && this._config.colorize) {
+          // Tint fill/background/text as one consistent tonal ramp of the light's hue,
+          // matching the exact saturation/lightness relationship the built-in Material
+          // amber palette uses (material_color.*.on.light) - a raw, fully-saturated bulb
+          // color used directly is much brighter/more saturated than that palette and
+          // reads as glaring, especially in dark mode. [S%, L%] pairs below were reverse
+          // engineered from that palette's hex values and re-verified for >= 4.5:1 WCAG
+          // contrast (text vs. both fill and background) across the full hue range.
+          const hue = rgbToHue(rgbColor);
+          const [fillS, fillL] = theme === "dark" ? [32, 24] : [100, 76];
+          const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
+          const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
 
-          if (this._config.colorize) {
-            // Tint the whole card (background + text/icon) to match the light's
-            // hue too, instead of leaving them on the generic Material amber tone.
-            const hue = rgbToHue(rgbColor);
-            const background =
-              theme === "dark"
-                ? `hsl(${hue}, 15%, 18%)`
-                : `hsl(${hue}, 85%, 88%)`;
-            // Light-theme lightness is tuned to 18% (not 24%) because at fixed HSL
-            // lightness, perceived/relative luminance still varies a lot by hue (yellows
-            // read much brighter than blues at the same L) - 18% keeps >= 4.5:1 WCAG AA
-            // contrast against the background across the full hue range, verified
-            // numerically; 24% dropped as low as ~4.2:1 around yellow hues.
-            const text =
-              theme === "dark"
-                ? `hsl(${hue}, 90%, 78%)`
-                : `hsl(${hue}, 100%, 18%)`;
+          color = `hsl(${hue}, ${fillS}%, ${fillL}%)`;
+          const text = `hsl(${hue}, ${textS}%, ${textL}%)`;
 
-            this.style.setProperty("--bsc-background", background);
-            this.style.setProperty("--bsc-name-color", text);
-            this.style.setProperty("--bsc-icon-color", text);
-            this.style.setProperty("--bsc-percentage-color", text);
-          }
+          this.style.setProperty(
+            "--bsc-background",
+            `hsl(${hue}, ${bgS}%, ${bgL}%)`,
+          );
+          this.style.setProperty("--bsc-name-color", text);
+          this.style.setProperty("--bsc-icon-color", text);
+          this.style.setProperty("--bsc-percentage-color", text);
         } else {
-          // No color info available (dimmer-only / color-temperature lights): fall back to
-          // the same Material "on" tone the non-colorized slider already uses, instead of a
-          // flat white fill that clashes with the rest of the card's theming.
+          // colorize disabled, or no color info available (dimmer-only / color-temperature
+          // lights): fall back to the same Material "on" tone the non-colorized slider
+          // already uses, instead of a flat white or raw-color fill.
           color = (material_color as any)[theme].on.light.slider;
         }
       } else if (this._status == OnStates.OPEN) {
@@ -492,7 +485,6 @@ export class MaterialSliderCard extends LitElement {
       } else percentage && (percentage.innerText = localize("common.offline"));
     }
     this.style.setProperty("--bsc-entity-color", color);
-    this.style.setProperty("--bsc-brightness-ui", brightnessFilter);
     if (this._config.icon_color && isOn) {
       this.style.setProperty("--bsc-icon-color", this._config.icon_color);
     }
@@ -751,7 +743,6 @@ export class MaterialSliderCard extends LitElement {
         --bsc-background: var(--card-background-color, #aaaaaa);
         --bsc-slider-color: var(--paper-slider-active-color, #f9d2b0);
         --bsc-percent: 0%;
-        --bsc-brightness-ui: 100%;
         --bsc-color: var(--paper-item-icon-color);
         --bsc-off-color: var(--paper-item-icon-color);
         --bsc-entity-color: var(--bsc-color);
@@ -823,17 +814,13 @@ export class MaterialSliderCard extends LitElement {
 
       #slider.colorize {
         background-color: var(--bsc-entity-color);
-        filter: brightness(var(--bsc-brightness-ui));
-        transition:
-          background-color 1s ease,
-          filter 1s ease;
+        transition: background-color 1s ease;
       }
 
       #slider.animate {
         transition:
           right 1s ease,
-          background-color 1s ease,
-          filter 1s ease;
+          background-color 1s ease;
       }
 
       #content {
