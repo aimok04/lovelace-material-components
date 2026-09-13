@@ -3,7 +3,7 @@ description: "Have an idea to improve the project? Suggest it!"
 title: "[FEATURE]: "
 labels: ["✨ features"]
 assignees:
-  - "giovannilamarmora"
+  - "aimok04"
 body:
   - type: markdown
     attributes:

@@ -3,7 +3,7 @@ description: "Found a bug? Help us fix it!"
 title: "[BUG]: "
 labels: ["🐛 bug"]
 assignees:
-  - "giovannilamarmora"
+  - "aimok04"
 body:
   - type: markdown
     attributes:

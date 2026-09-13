@@ -12,8 +12,8 @@
   ],
   "module": "material-components.js",
   "type": "module",
-  "repository": "git@github.com:giovannilamarmora/lovelace-material-components.git",
-  "author": "Giovanni Lamarmora",
+  "repository": "git@github.com:aimok04/lovelace-material-components.git",
+  "author": "aimok04",
   "license": "Apache-2.0",
   "dependencies": {
     "@nicufarmache/slide-gesture": "^1.2.4",

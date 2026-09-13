@@ -1,24 +1,22 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Logo/Logo.png" width="250px" alt="Material Home Assistant Logo">
+  <img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Logo/Logo.png" width="250px" alt="Material Home Assistant Logo">
   <h1>🏠 Material Home Assistant</h1>
   <h3 style="margin-top: -20px">✨Components for Home Assistant</h3>
 </div>
 
-[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=giovannilamarmora&button_colour=5F7FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/giovannilamarmora)
+> [!IMPORTANT]
+> ### 🤖 This is a personal fork — vibecoded with Claude
+>
+> This is **[aimok04](https://github.com/aimok04)'s personal fork** of [giovannilamarmora/lovelace-material-components](https://github.com/giovannilamarmora/lovelace-material-components), built and extended with **[Claude](https://claude.com/claude-code)**. Expect it to diverge from upstream over time.
+>
+> **Changes so far:**
+> - 🎚️ Slider: `tap_action` / `hold_action` are now configurable from the visual editor
+> - 🎨 Slider "colorize": reworked for correct, theme-aware contrast in light and dark mode
+> - ➡️ Slider: new optional arrow button with a configurable action
+> - 🌡️ Climate: tap action is now configurable (was hardcoded to more-info)
+> - 🧹 Removed the "Upgrade to Pro/Ultimate" banner from the card editors
 
-> ### 💎 Elevate Your Experience
->
-> Unlock the full potential of your smart home with advanced professional features.
->
-> #### 🚀 Pro & Ultimate Versions Available
->
-> Choose the perfect plan for your needs and take your automation to the next level.
->
-> [![Get It Now](https://img.shields.io/static/v1?label=&message=GET%20IT%20NOW%20🚀&color=6750A4&style=for-the-badge&logoColor=white)](https://materialhomeassistant.com/#pricing)
-
-[![Instagram](https://img.shields.io/badge/Instagram-%40gio_lamarmora-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/gio_lamarmora/)&nbsp;&nbsp;[![WebSite](https://img.shields.io/badge/WebSite%20-Visit-blue?style=for-the-badge&logo=Google-Chrome&logoColor=white)](https://giovannilamarmora.github.io/)&nbsp;&nbsp;[![WebSite](https://img.shields.io/badge/Home%20Assistant%20Forum-View-blue?style=for-the-badge&logo=Home-Assistant&logoColor=white)](https://community.home-assistant.io/t/introducing-the-google-components/916428)&nbsp;&nbsp;[![BuyMeACoffee](https://img.shields.io/badge/☕_Buy_me_a_coffee-Support-orange?style=for-the-badge&logo=buymeacoffee&logoColor=white)](https://www.buymeacoffee.com/giovannilamarmora)&nbsp;&nbsp;[![Sponsor](https://img.shields.io/badge/GitHub_Sponsors-Become_a_Sponsor-pink?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/giovannilamarmora)
-
-[![My Home Assistant](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?repository=lovelace-material-components&owner=giovannilamarmora&category=Plugin)
+[![My Home Assistant](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?repository=lovelace-material-components&owner=aimok04&category=Plugin)
 
 **Bring the Google Home app experience directly into Home Assistant**
 
@@ -34,11 +32,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dashboard/Material%20Dashboard%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dashboard/Material%20Dashboard%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dashboard/Material%20Dashboard%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dashboard/Material%20Dashboard%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -53,11 +51,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Button/Material%20Button%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Button/Material%20Button%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Button/Material%20Button%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Button/Material%20Button%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -72,11 +70,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Slider/Material%20Slider%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Slider/Material%20Slider%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Slider/Material%20Slider%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Slider/Material%20Slider%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -91,11 +89,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Climate/Material%20Climate%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Climate/Material%20Climate%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Climate/Material%20Climate%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Climate/Material%20Climate%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -110,11 +108,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Control/Material%20Control%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Control/Material%20Control%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Control/Material%20Control%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Control/Material%20Control%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -129,11 +127,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Light/Material%20Light%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Light/Material%20Light%20Light.png" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Light/Material%20Light%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Light/Material%20Light%20Dark.png" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -148,11 +146,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Media%20Overlay/Material%20Media%20Light.jpg" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Media%20Overlay/Material%20Media%20Light.jpg" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Media%20Overlay/Material%20Media%20Dark.jpg" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Media%20Overlay/Material%20Media%20Dark.jpg" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -169,11 +167,11 @@ A suite of custom cards that implements the **Material You** design principles f
 <tr>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
 <strong style="color: white; font-size: 18px;">☀️ Light Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dialog/Material%20Dialog%20Light.jpg" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dialog/Material%20Dialog%20Light.jpg" alt="Control Light" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"/>
 </td>
 <td width="50%" align="center" style="padding: 24px; background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
 <strong style="color: white; font-size: 18px;">🌙 Dark Mode</strong><br/><br/>
-<img src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dialog/Material%20Dialog%20Dark.jpg" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
+<img src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/img/Material%20Home%20Component/Material%20Dialog/Material%20Dialog%20Dark.jpg" alt="Control Dark" style="border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);"/>
 </td>
 </tr>
 </table>
@@ -228,7 +226,7 @@ either by clicking the button below or by manually adding the repository.
 
 If you already have HACS installed, you can add the repository directly by clicking this button:
 
-[![My Home Assistant](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?repository=lovelace-material-components&owner=giovannilamarmora&category=Plugin)
+[![My Home Assistant](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?repository=lovelace-material-components&owner=aimok04&category=Plugin)
 
 Then, simply install the plugin from the HACS interface.
 
@@ -239,7 +237,7 @@ Then, simply install the plugin from the HACS interface.
 3. Click Add repository and enter the following URL:
 
 ```
-https://github.com/giovannilamarmora/lovelace-material-components
+https://github.com/aimok04/lovelace-material-components
 ```
 
 4. Select Plugin as the category.
@@ -249,35 +247,11 @@ https://github.com/giovannilamarmora/lovelace-material-components
 
 ---
 
-### ☁️ Method 2: CDN
-
-The second easiest and fastest way. No download required here either!
-
-1. **Open Home Assistant** and go to:
-
-   ```
-   Settings → Dashboards → Manage Resources
-   ```
-
-2. **Click "Add Resource"** and enter:
-
-- **Type:** `JavaScript module`
-- **URL:**
-  ```
-  https://cdn.jsdelivr.net/gh/giovannilamarmora/lovelace-material-components@master/dist/material-components.js?v=20250626
-  ```
-
-3. **Save** and restart Home Assistant.
-
-> 💡 **Tip:** Change the `?v=YYYYMMDD` parameter to force cache refresh after new releases.
-
----
-
-### 🔧 Method 3: Manual Installation
+### 🔧 Method 2: Manual Installation
 
 For those who prefer to host files locally.
 
-1. **Download** the file [`material-components.js`](https://github.com/giovannilamarmora/lovelace-material-components/blob/master/dist/material-components.js)
+1. **Download** the file [`material-components.js`](https://github.com/aimok04/lovelace-material-components/blob/master/dist/material-components.js)
 
 2. **Copy** the file into the `config/www/` folder of Home Assistant:
 
@@ -300,15 +274,6 @@ For those who prefer to host files locally.
 
 ---
 
-## Migration from Google Components
-
-If you were using the old Google Components, you can migrate your dashboards easily.  
-Check the migration guide here:
-
-🔗 [Migration Guide](https://giovannilamarmora.gitbook.io/material-home-component/additional/migration-to-material-component)
-
----
-
 ### Features
 
 - Material-style button cards, dialogs, and media overlays.
@@ -316,48 +281,6 @@ Check the migration guide here:
 - Responsive UI for both desktop and mobile.
 - Enhanced customization and theme support.
 - Easy migration from the old Google Components repository.
-
----
-
-## 📚 Full Documentation
-
-<div align="center">
-
-<table style="border-radius: 28px; overflow: hidden; border-collapse: separate; border-spacing: 0; box-shadow: 0 8px 32px rgba(66, 133, 244, 0.2); max-width: 800px; margin: 0 auto;">
-<tr>
-<td align="center" style="padding: 48px 40px; background: linear-gradient(135deg, #4285F4 0%, #0F9D58 100%);">
-<div style="font-size: 64px; margin-bottom: 20px;">📖</div>
-<h2 style="color: white; margin: 0 0 16px 0; font-size: 28px;">Complete Guide</h2>
-<p style="color: rgba(255,255,255,0.9); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">
-Everything you need to configure, customize, and get the most out of<br/>Material Home Component
-</p>
-<a href="https://giovannilamarmora.gitbook.io/material-home-component" style="text-decoration: none;">
-<div style="background: white; color: #4285F4; padding: 16px 48px; border-radius: 100px; font-weight: bold; font-size: 18px; display: inline-block; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s;">
-Read the Documentation →
-</div>
-</a>
-<br>
-<br>
-<a href="https://community.home-assistant.io/t/introducing-the-google-components/916428" style="text-decoration: none;">
-<div style="background: white; color: #4285F4; padding: 16px 48px; border-radius: 100px; font-weight: bold; font-size: 18px; display: inline-block; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s;">
-Official Community and Discussion →
-</div>
-</a>
-<div style="margin-top: 32px; color: white; font-size: 14px;">
-<span style="display: block; margin-bottom: 12px; font-size: 16px;">📋 You’ll find:</span>
-<div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px;">
-<span>✅ Detailed setup</span>
-<span>✅ Practical examples</span>
-<span>✅ System requirements</span>
-<span>✅ Customization</span>
-<span>✅ Troubleshooting</span>
-</div>
-</div>
-</td>
-</tr>
-</table>
-
-</div>
 
 ---
 
@@ -442,70 +365,6 @@ This project is possible thanks to the work of:
 
 ---
 
-## 💝 Support the Project
-
-<div align="center">
-
-If this project was helpful to you, consider supporting it!
-
-<table style="border-radius: 28px; overflow: hidden; border-collapse: separate; border-spacing: 0; box-shadow: 0 8px 32px rgba(255, 221, 0, 0.2); max-width: 700px; margin: 24px auto;">
-<tr>
-<td align="center" style="padding: 48px 40px; background: linear-gradient(135deg, #FFEB3B 0%, #FFC107 100%);">
-<div style="font-size: 64px; margin-bottom: 16px;">☕</div>
-<h3 style="color: #F57F17; margin: 0 0 24px 0; font-size: 24px;">Buy Me a Coffee</h3>
-
-[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=giovannilamarmora&button_colour=F57F17&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/giovannilamarmora)
-
-<br/>
-<p style="margin-top: 24px; color: #424242; font-size: 14px; line-height: 1.6;">
-<strong>Your support helps keep the project alive!</strong><br/>
-⭐ Leave a star on GitHub if you like it
-</p>
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-## 🛠️ Contribute
-
-<div align="center">
-
-This project is currently in **alpha**. Your contribution is valuable!
-
-<table style="border-radius: 28px; overflow: hidden; border-collapse: separate; border-spacing: 0; box-shadow: 0 4px 24px rgba(0,0,0,0.08); margin-top: 24px;">
-<tr>
-<td align="center" style="padding: 40px; background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);">
-<div style="margin-bottom: 24px;">
-<a href="https://github.com/giovannilamarmora/lovelace-material-components/issues">
-<img src="https://img.shields.io/badge/🤝_Contribute-2E7D32?style=for-the-badge&logo=github&logoColor=white" alt="Contribute" style="border-radius: 8px;"/>
-</a>
-<br/><br/>
-<a href="https://github.com/giovannilamarmora/lovelace-material-components/issues">
-<img src="https://img.shields.io/github/issues/giovannilamarmora/lovelace-material-components?style=for-the-badge&color=1976D2" alt="Issues" style="border-radius: 8px;"/>
-</a>
-<br/><br/>
-<a href="https://github.com/giovannilamarmora/lovelace-material-components/pulls">
-<img src="https://img.shields.io/github/issues-pr/giovannilamarmora/lovelace-material-components?style=for-the-badge&color=7B1FA2" alt="Pull Requests" style="border-radius: 8px;"/>
-</a>
-</div>
-<div style="color: #424242; font-size: 15px; line-height: 1.8;">
-<strong style="display: block; margin-bottom: 16px; font-size: 18px; color: #2E7D32;">How you can help:</strong><br/>
-🐛 Report bugs or issues<br/>
-💡 Suggest new features<br/>
-📝 Improve documentation<br/>
-🔧 Submit pull requests
-</div>
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
 ## 📜 License
 
 <div align="center">
@@ -539,7 +398,7 @@ Made with ❤️ for the Home Assistant community
 <a href="https://www.home-assistant.io/">
 <img src="https://img.shields.io/badge/Home_Assistant-41BDF5?style=for-the-badge&logo=home-assistant&logoColor=white" alt="Home Assistant" style="border-radius: 8px; margin: 0 8px;"/>
 </a>
-<a href="https://github.com/giovannilamarmora/lovelace-material-components">
+<a href="https://github.com/aimok04/lovelace-material-components">
 <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" style="border-radius: 8px; margin: 0 8px;"/>
 </a>
 </div>

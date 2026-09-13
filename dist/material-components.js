@@ -2041,27 +2041,27 @@ const ce=e=>(t,i)=>{void 0!==i?i.addInitializer(()=>{customElements.define(e,t)}
         <div class="video-card">
           <div class="video-card-bg" style="${f}"></div>
           ${function(e,t){switch(e){case"Spotify":return H`<img
-        src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Spotify.webp"
+        src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Spotify.webp"
         width="24"
         height="24"
         style="border-radius: 50px; object-fit: cover;z-index: 1;"
       />`;case"YouTube":return H`<img
-        src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/logo/YouTube.png"
+        src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/logo/YouTube.png"
         width="24"
         height="24"
         style="border-radius: 50px; object-fit: cover;"
       />`;case"Netflix":return H`<img
-        src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Netflix.webp"
+        src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Netflix.webp"
         width="24"
         height="24"
         style="border-radius: 50px; object-fit: cover;"
       />`;case"Prime Video":return H`<img
-        src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Prime.png"
+        src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Prime.png"
         width="24"
         height="24"
         style="border-radius: 50px; object-fit: cover;"
       />`;case"Twitch":return H`<img
-        src="https://raw.githubusercontent.com/giovannilamarmora/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Twitch.jpg"
+        src="https://raw.githubusercontent.com/aimok04/lovelace-material-components/refs/heads/master/src/shared/assets/logo/Twitch.jpg"
         width="24"
         height="24"
         style="border-radius: 50px; object-fit: cover;"
