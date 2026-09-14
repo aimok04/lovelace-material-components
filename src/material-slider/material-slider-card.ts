@@ -467,16 +467,20 @@ export class MaterialSliderCard extends LitElement {
           // engineered from that palette's hex values and re-verified for >= 4.5:1 WCAG
           // contrast (text vs. both fill and background) across the full hue range.
           const hue = rgbToHue(rgbColor);
+          // Achromatic input (white/black/gray) has no hue - keep the lightness ramp but
+          // drop saturation to 0, otherwise it'd render as red (hue 0's usual meaning).
+          const isAchromatic = hue < 0;
+          const displayHue = isAchromatic ? 0 : hue;
           const [fillS, fillL] = theme === "dark" ? [32, 24] : [100, 76];
           const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
           const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
 
-          color = `hsl(${hue}, ${fillS}%, ${fillL}%)`;
-          const text = `hsl(${hue}, ${textS}%, ${textL}%)`;
+          color = `hsl(${displayHue}, ${isAchromatic ? 0 : fillS}%, ${fillL}%)`;
+          const text = `hsl(${displayHue}, ${isAchromatic ? 0 : textS}%, ${textL}%)`;
 
           this.style.setProperty(
             "--bsc-background",
-            `hsl(${hue}, ${bgS}%, ${bgL}%)`,
+            `hsl(${displayHue}, ${isAchromatic ? 0 : bgS}%, ${bgL}%)`,
           );
           this.style.setProperty("--bsc-name-color", text);
           this.style.setProperty("--bsc-icon-color", text);

@@ -30,6 +30,11 @@ export function _setStyleProperty(
 /**
  * Extracts the hue (0-360) from an [r, g, b] triplet, used to derive a
  * Material-like tonal background/text pair for any color.
+ *
+ * Returns -1 for an achromatic input (white, black, or any gray - r === g === b), which
+ * has no meaningful hue. Callers must check for this and drop saturation to 0 instead of
+ * treating it as hue 0 (red) - forcing red onto a neutral color is a distinct bug, not a
+ * quirk to route around at the display layer.
  */
 export function rgbToHue([r, g, b]: number[]): number {
   const rn = r / 255;
@@ -39,7 +44,7 @@ export function rgbToHue([r, g, b]: number[]): number {
   const min = Math.min(rn, gn, bn);
   const delta = max - min;
 
-  if (delta === 0) return 0;
+  if (delta === 0) return -1;
 
   let hue: number;
   switch (max) {

@@ -45,14 +45,22 @@ export function setColorCard(
 
   if (overrideRgb) {
     const hue = rgbToHue(overrideRgb);
+    // Achromatic input (white/black/gray) has no hue - keep the lightness ramp but drop
+    // saturation to 0, otherwise it'd render as red (hue 0's usual meaning).
+    const isAchromatic = hue < 0;
+    const displayHue = isAchromatic ? 0 : hue;
     const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
     const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
-    const text = `hsl(${hue}, ${textS}%, ${textL}%)`;
+    const text = `hsl(${displayHue}, ${isAchromatic ? 0 : textS}%, ${textL}%)`;
 
     _setStyleProperty("--bsc-name-color", text, style);
     _setStyleProperty("--bsc-icon-color", text, style);
     _setStyleProperty("--bsc-percentage-color", text, style);
-    _setStyleProperty("--bsc-background", `hsl(${hue}, ${bgS}%, ${bgL}%)`, style);
+    _setStyleProperty(
+      "--bsc-background",
+      `hsl(${displayHue}, ${isAchromatic ? 0 : bgS}%, ${bgL}%)`,
+      style,
+    );
   } else {
     let color: any;
 
