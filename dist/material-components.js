@@ -1599,7 +1599,7 @@ const ce=e=>(t,i)=>{void 0!==i?i.addInitializer(()=>{customElements.define(e,t)}
                     placeholder="mdi:lightbulb"
                   />
                 `} `}
-        ${this._config.control_type==Ci.APP_VERSION||this._config.control_type==Ci.ACTION||this._config.control_type==Ci.THERMOMETER||this._config.control_type==Ci.SCENE||this._config.control_type==Ci.MEDIA_PLAYER||this._config.control_type==Ci.STATE?H``:H`<div class="switch-row">
+        ${this._config.control_type==Ci.APP_VERSION||this._config.control_type==Ci.ACTION||this._config.control_type==Ci.THERMOMETER||this._config.control_type==Ci.SCENE||this._config.control_type==Ci.MEDIA_PLAYER?H``:H`<div class="switch-row">
               <span class="switch-label"
                 >${fi("material_button_card.dual_text.default")}</span
               >

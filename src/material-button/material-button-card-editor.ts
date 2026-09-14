@@ -385,8 +385,7 @@ export class MaterialButtonCardEditor
         this._config.control_type == ControlType.ACTION ||
         this._config.control_type == ControlType.THERMOMETER ||
         this._config.control_type == ControlType.SCENE ||
-        this._config.control_type == ControlType.MEDIA_PLAYER ||
-        this._config.control_type == ControlType.STATE
+        this._config.control_type == ControlType.MEDIA_PLAYER
           ? html``
           : html`<div class="switch-row">
               <span class="switch-label"
