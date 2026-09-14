@@ -15,7 +15,7 @@ import { MaterialMediaOverlay } from "../material-media-overlay/material-media-o
 import { ControlType, DeviceType, getValidDeviceClass } from "../shared/types";
 import { isDeviceOn, isOfflineState } from "../shared/states";
 import { _openDialog } from "../dialog/dialog-manager";
-import { evaluateAction, handleAction } from "../shared/actions";
+import { evaluateAction, handleAction, mapJSFunction } from "../shared/actions";
 import { isNullOrEmpty } from "../shared/utils/utils";
 
 @customElement("material-button-card")
@@ -392,8 +392,9 @@ export class MaterialButtonCard extends LitElement {
             )
           : "";
     } else {
-      if (isOn) stateDisplay = this._config.text_on!;
-      else stateDisplay = this._config.text_off!;
+      // Supports a plain string, or a [[[ ... ]]] JS template (same convention as icon/actions)
+      const rawText = isOn ? this._config.text_on : this._config.text_off;
+      stateDisplay = mapJSFunction(rawText, stateObj, stateObj.state, this.hass);
 
       if (isOfflineState(stateObj.state)) {
         stateDisplay = localize("common.offline");

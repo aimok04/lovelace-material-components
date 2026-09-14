@@ -81,6 +81,7 @@
       "options": "Dubbel pictogram gebruiken (Aan- en Uit-status)."
     },
     "fix_temperature": "Inschakelen als de temperatuur niet correct is",
+    "state_template": "Geavanceerd: temperatuur-/statustekst overschrijven met een [[[ ]]] JS-sjabloon",
     "false": "Niet actief",
     "true": "Actief",
     "auto": "Auto"
@@ -129,6 +130,7 @@
     "percentage": "Waarde als percentage weergeven",
     "bold_text": "Vette tekststijl",
     "colorize": "Schuifregelaar inkleuren op basis van de lichtkleur",
+    "percentage_template": "Geavanceerd: statustekst overschrijven met een [[[ ]]] JS-sjabloon",
     "show_arrow": "Pijlknop tonen (opent de ingestelde pijlactie)"
   },
   "material_lights_card": {

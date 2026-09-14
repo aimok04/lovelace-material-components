@@ -6,7 +6,7 @@ import {
   DEFAULT_CONFIG,
   MaterialClimateCardConfig,
 } from "./material-climate-const";
-import { handleAction } from "../shared/actions";
+import { handleAction, mapJSFunction } from "../shared/actions";
 import { applyRippleEffect } from "../animations";
 import { material_color } from "../shared/color";
 import { getIcon, getName, mapStateDisplay } from "../shared/mapper";
@@ -122,14 +122,26 @@ export class MaterialClimateCard extends LitElement {
     const name = getName(this._config, this.hass);
     const isOffline = isOfflineState(stateObj.state);
 
-    const stateDisplay = mapStateDisplay(
-      stateObj,
-      "thermometer",
-      isOffline,
-      this._config.fix_temperature,
-      true,
-      this.hass,
-    );
+    // Supports a [[[ ... ]]] JS template overriding the default temperature/status text
+    const templatedState = this._config.state_template
+      ? mapJSFunction(
+          this._config.state_template,
+          stateObj,
+          stateObj.state,
+          this.hass,
+        )
+      : undefined;
+
+    const stateDisplay =
+      templatedState ??
+      mapStateDisplay(
+        stateObj,
+        "thermometer",
+        isOffline,
+        this._config.fix_temperature,
+        true,
+        this.hass,
+      );
 
     const theme = this.hass?.themes?.darkMode ? "dark" : "light";
     const isOn = isDeviceOn(stateObj.state);

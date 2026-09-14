@@ -81,6 +81,7 @@
       "options": "Använd dubbel ikon (På och av element)."
     },
     "fix_temperature": "Aktivera om temperaturen inte är korrekt",
+    "state_template": "Avancerat: skriv över temperatur-/statustexten med en [[[ ]]] JS-mall",
     "false": "Inte aktiv",
     "true": "Aktiv",
     "auto": "Automatisk"
@@ -129,6 +130,7 @@
     "percentage": "Visa procentvärde",
     "bold_text": "Fetstilad text",
     "colorize": "Färglägg skjutreglaget baserat på ljusets färg",
+    "percentage_template": "Avancerat: skriv över statustexten med en [[[ ]]] JS-mall",
     "show_arrow": "Visa pilknapp (öppnar den konfigurerade pilätgärden)"
   },
   "material_lights_card": {

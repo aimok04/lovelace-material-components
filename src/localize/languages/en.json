@@ -81,6 +81,7 @@
       "options": "Use Dual Icon (On and Off states)."
     },
     "fix_temperature": "Enable if temperature is not correct",
+    "state_template": "Advanced: override the temperature/status text with a [[[ ]]] JS template",
     "false": "Not Active",
     "true": "Active",
     "auto": "Auto"
@@ -129,6 +130,7 @@
     "percentage": "Display value as percentage",
     "bold_text": "Bold style for the text",
     "colorize": "Colorize slider based on the light's color",
+    "percentage_template": "Advanced: override the status text with a [[[ ]]] JS template",
     "show_arrow": "Show arrow button (opens the configured arrow action)"
   },
   "material_lights_card": {

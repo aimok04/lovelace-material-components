@@ -81,6 +81,7 @@
       "options": "Utiliser une double icône (État activé et désactivé)."
     },
     "fix_temperature": "Activer si la température n’est pas correcte",
+    "state_template": "Avancé : remplacer le texte de température/état par un modèle JS [[[ ]]]",
     "false": "Inactif",
     "true": "Actif",
     "auto": "Automatique"
@@ -129,6 +130,7 @@
     "percentage": "Afficher la valeur en pourcentage",
     "bold_text": "Texte en gras",
     "colorize": "Colorer le curseur selon la couleur de la lumière",
+    "percentage_template": "Avancé : remplacer le texte d'état par un modèle JS [[[ ]]]",
     "show_arrow": "Afficher le bouton flèche (ouvre l'action flèche configurée)"
   },
   "material_lights_card": {

@@ -81,6 +81,7 @@
       "options": "Usar Ícone Duplo (estados Ligado e Desligado)."
     },
     "fix_temperature": "Habilitar se a temperatura não estiver correta",
+    "state_template": "Avançado: substituir o texto de temperatura/status por um template JS [[[ ]]]",
     "false": "Inativo",
     "true": "Ativo",
     "auto": "Automático"
@@ -129,6 +130,7 @@
     "percentage": "Exibir valor como porcentagem",
     "bold_text": "Estilo negrito para o texto",
     "colorize": "Colorir o controle deslizante com base na cor da luz",
+    "percentage_template": "Avançado: substituir o texto de status por um template JS [[[ ]]]",
     "show_arrow": "Mostrar botão de seta (abre a ação de seta configurada)"
   },
   "material_lights_card": {

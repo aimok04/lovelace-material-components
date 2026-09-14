@@ -81,6 +81,7 @@
       "options": "Usa doppia icona (Elemento acceso e spento)."
     },
     "fix_temperature": "Abilita se la temperatura non è corretta",
+    "state_template": "Avanzato: sostituisci il testo di temperatura/stato con un template JS [[[ ]]]",
     "false": "Non attivo",
     "true": "Attivo",
     "auto": "Automatico"
@@ -129,6 +130,7 @@
     "percentage": "Mostra la percentuale di valore",
     "bold_text": "Testo con stile in grassetto",
     "colorize": "Colora lo slider in base al colore della luce",
+    "percentage_template": "Avanzato: sostituisci il testo di stato con un template JS [[[ ]]]",
     "show_arrow": "Mostra pulsante freccia (apre l'azione freccia configurata)"
   },
   "material_lights_card": {

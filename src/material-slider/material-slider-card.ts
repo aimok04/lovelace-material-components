@@ -22,7 +22,7 @@ import {
 } from "../shared/states";
 import { getIcon } from "../shared/mapper";
 import { ControlType, DomainType } from "../shared/types";
-import { handleAction } from "../shared/actions";
+import { handleAction, mapJSFunction } from "../shared/actions";
 
 export class MaterialSliderCard extends LitElement {
   // @property({ attribute: false }) public hass!: HomeAssistant;
@@ -135,8 +135,16 @@ export class MaterialSliderCard extends LitElement {
       this.currentValue = this._state?.attributes?.current_position ?? 0;
     }
 
+    // Supports a plain string, or a [[[ ... ]]] JS template (same convention as icon/actions)
+    const templatedName = mapJSFunction(
+      this._config.name,
+      this._state,
+      this._status,
+      hass,
+    );
+
     this._name =
-      this._config.name ??
+      templatedName ??
       this._state?.attributes?.friendly_name ??
       this._entity.split(".")[1] ??
       "";
@@ -669,6 +677,25 @@ export class MaterialSliderCard extends LitElement {
       this.shadowRoot?.getElementById("container")?.clientWidth ?? 0;
     this._getValue();
     this._updateColors();
+    this._applyPercentageTemplate();
+  }
+
+  // Optional override for the percentage/status label, evaluated after the default text
+  // (brightness %, "Opening", "Off", ...) has already been computed and rendered.
+  private _applyPercentageTemplate(): void {
+    const template = this._config.percentage_template;
+    if (!template) return;
+
+    const percentage = this.shadowRoot?.getElementById("percentage");
+    if (!percentage) return;
+
+    const templated = mapJSFunction(
+      template,
+      this._state,
+      this._status,
+      this._hass,
+    );
+    if (typeof templated === "string") percentage.innerText = templated;
   }
 
   protected render(): TemplateResult | void {

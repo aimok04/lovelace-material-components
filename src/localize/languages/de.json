@@ -81,6 +81,7 @@
       "options": "Doppelsymbol verwenden (Ein-/Aus-Zustand)."
     },
     "fix_temperature": "Aktivieren, wenn die Temperatur nicht korrekt ist",
+    "state_template": "Erweitert: Temperatur-/Statustext mit einem [[[ ]]] JS-Template überschreiben",
     "false": "Inaktiv",
     "true": "Aktiv",
     "auto": "Automatisch"
@@ -129,6 +130,7 @@
     "percentage": "Wert in Prozent anzeigen",
     "bold_text": "Text fett formatieren",
     "colorize": "Schieberegler entsprechend der Lichtfarbe einfärben",
+    "percentage_template": "Erweitert: Statustext mit einem [[[ ]]] JS-Template überschreiben",
     "show_arrow": "Pfeil-Schaltfläche anzeigen (öffnet die konfigurierte Pfeil-Aktion)"
   },
   "material_lights_card": {

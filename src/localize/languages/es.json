@@ -81,6 +81,7 @@
       "options": "Usar doble icono (Elemento encendido y apagado)."
     },
     "fix_temperature": "Activar si la temperatura no es correcta",
+    "state_template": "Avanzado: sobrescribir el texto de temperatura/estado con una plantilla JS [[[ ]]]",
     "false": "Inactivo",
     "true": "Activo",
     "auto": "Automático"
@@ -129,6 +130,7 @@
     "percentage": "Mostrar valor en porcentaje",
     "bold_text": "Texto en negrita",
     "colorize": "Colorear el control deslizante según el color de la luz",
+    "percentage_template": "Avanzado: sobrescribir el texto de estado con una plantilla JS [[[ ]]]",
     "show_arrow": "Mostrar botón de flecha (abre la acción de flecha configurada)"
   },
   "material_lights_card": {

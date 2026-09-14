@@ -11,6 +11,7 @@ export interface MaterialClimateCardConfig extends LovelaceCardConfig {
   icon?: string;
   fix_temperature?: "true" | "false" | "auto";
   tap_action?: ActionConfig;
+  state_template?: string;
 }
 
 export const DEFAULT_CONFIG: MaterialClimateCardConfig = {

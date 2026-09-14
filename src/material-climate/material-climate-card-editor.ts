@@ -287,6 +287,19 @@ export class MaterialClimateCardEditor
         </ha-selector>
 
         <ha-selector
+          style="max-height: 56px"
+          .hass=${this.hass}
+          .selector=${{
+            text: {},
+          }}
+          .label=${localize("material_climate_card.state_template")}
+          .value=${this._config.state_template || ""}
+          configValue="state_template"
+          @value-changed=${(ev: Event) => _valueChanged(ev, this)}
+          placeholder="[[[ return state + '°' ]]]"
+        ></ha-selector>
+
+        <ha-selector
           .hass=${this.hass}
           label="${localize("actions.tap_action_title")}"
           .selector=${{

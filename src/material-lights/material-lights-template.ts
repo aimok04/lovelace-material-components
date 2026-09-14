@@ -1,5 +1,20 @@
 import { MaterialLightCardConfig } from "./material-lights-const";
 
+// Body of the button-card `name: |\n  [[[\n<body>\n  ]]]` block. A plain string becomes a
+// literal `return '...'` (existing behavior); a [[[ ... ]]] value is spliced in as-is so the
+// user's own template code runs, instead of being embedded as inert text inside a quoted string.
+function toButtonCardTextBody(value: string | undefined, indent: string): string {
+  const trimmed = (value ?? "").trim();
+  if (trimmed.startsWith("[[[") && trimmed.endsWith("]]]")) {
+    const inner = trimmed.slice(3, -3).trim();
+    return inner
+      .split("\n")
+      .map((line) => `${indent}${line}`)
+      .join("\n");
+  }
+  return `${indent}return '${trimmed.replace(/'/g, "\\'")}'`;
+}
+
 export function materialTemplate(config: MaterialLightCardConfig) {
   const area_id: any =
     config.control_area && config.area_id ? config.area_id : undefined;
@@ -34,7 +49,7 @@ card:
             triggers_update: all
             name: |
               [[[
-                return '${config.on_text}'
+${toButtonCardTextBody(config.on_text, "                ")}
               ]]]
             styles:
               card:
@@ -146,7 +161,7 @@ card:
             triggers_update: all
             name: |
               [[[
-                return '${config.off_text}'
+${toButtonCardTextBody(config.off_text, "                ")}
               ]]]
             styles:
               card:

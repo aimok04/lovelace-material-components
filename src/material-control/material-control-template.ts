@@ -1,23 +1,27 @@
 import { MaterialControlCardConfig } from "./material-control-const";
 import { serializeAction } from "../shared/actions";
 
-export function materialControlTemplate(config: MaterialControlCardConfig) {
-  const name = config.name;
-  let icon = config.icon;
-
-  // Gestione icona come template string [[[ ... ]]]
+// Emits a [[[ ... ]]] template as an indented YAML block scalar so multi-line JS survives;
+// leaves plain strings untouched. Needed for any field button-card itself templates (name, icon).
+function asYamlTemplateSafeValue(value?: string): string | undefined {
   if (
-    typeof icon === "string" &&
-    icon.trim().startsWith("[[[") &&
-    icon.trim().endsWith("]]]")
+    typeof value === "string" &&
+    value.trim().startsWith("[[[") &&
+    value.trim().endsWith("]]]")
   ) {
-    const indented = icon
+    const indented = value
       .trim()
       .split("\n")
       .map((line) => "  " + line)
       .join("\n");
-    icon = `|\n${indented}`;
+    return `|\n${indented}`;
   }
+  return value;
+}
+
+export function materialControlTemplate(config: MaterialControlCardConfig) {
+  const name = asYamlTemplateSafeValue(config.name);
+  const icon = asYamlTemplateSafeValue(config.icon);
 
   const entity =
     config.use_card_entity && config.entity ? "entity: " + config.entity : "";

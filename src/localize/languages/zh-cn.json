@@ -87,6 +87,7 @@
       "options": "使用双图标（打开和关闭状态）。"
     },
     "fix_temperature": "温度显示错误时可启用",
+    "state_template": "高级：使用 [[[ ]]] JS 模板覆盖温度/状态文本",
     "false": "未激活",
     "true": "已激活",
     "auto": "自动"
@@ -135,6 +136,7 @@
     "percentage": "将数值显示为百分比",
     "bold_text": "使用加粗的文本风格",
     "colorize": "根据灯光颜色为滑块着色",
+    "percentage_template": "高级：使用 [[[ ]]] JS 模板覆盖状态文本",
     "show_arrow": "显示箭头按钮（打开已配置的箭头操作）"
   },
   "material_lights_card": {

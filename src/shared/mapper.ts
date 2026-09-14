@@ -14,6 +14,7 @@ import {
   getValidDeviceClass,
 } from "./types";
 import { isDeviceOn, isOfflineState } from "./states";
+import { mapJSFunction } from "./actions";
 
 export function getIcon(stateObj: any, config: any, hass: any): string {
   const domain = stateObj.entity_id.split(".")[0];
@@ -445,8 +446,12 @@ export function mapStateDisplay(
 //}
 
 export function getName(config: any, hass: any) {
-  if (config.name) return config.name;
   const stateObj = hass.states[config.entity!];
+
+  // Supports a plain string, or a [[[ ... ]]] JS template (same convention as icon/actions)
+  const name = mapJSFunction(config.name, stateObj, stateObj?.state, hass);
+  if (name) return name;
+
   if (stateObj && stateObj.attributes.friendly_name)
     return stateObj.attributes.friendly_name;
   if (hass && hass.entities && hass.entities[config.entity]) {

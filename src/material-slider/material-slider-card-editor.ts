@@ -281,6 +281,19 @@ export class MaterialSliderCardEditor
           />
         </div>
 
+        <ha-selector
+          style="max-height: 56px"
+          .hass=${this.hass}
+          .selector=${{
+            text: {},
+          }}
+          .label=${localize("material_slider_card.percentage_template")}
+          .value=${this._config.percentage_template || ""}
+          configValue="percentage_template"
+          @value-changed=${(ev: Event) => _valueChanged(ev, this)}
+          placeholder="[[[ return state + '%' ]]]"
+        ></ha-selector>
+
         <div class="switch-row">
           <span class="switch-label"
             >${localize("material_slider_card.bold_text")}</span
