@@ -131,6 +131,7 @@
     "bold_text": "Testo con stile in grassetto",
     "colorize": "Colora lo slider in base al colore della luce",
     "percentage_template": "Avanzato: sostituisci il testo di stato con un template JS [[[ ]]]",
+    "colorize_color": "Colore hex personalizzato da usare (testo semplice o template JS [[[ ]]]) - sostituisce il colore reale della luce",
     "show_arrow": "Mostra pulsante freccia (apre l'azione freccia configurata)"
   },
   "material_lights_card": {

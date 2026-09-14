@@ -185,6 +185,27 @@ export function rgbToHue([r, g, b]: number[]): number {
   return hue < 0 ? hue + 360 : hue;
 }
 
+/**
+ * Parses a "#rgb" or "#rrggbb" hex color (leading "#" optional) into an [r, g, b] triplet,
+ * or returns null if the value isn't a valid hex color - used to mock an entity's color for
+ * colorize with a user-supplied (optionally templated) hex value.
+ */
+export function hexToRgb(hex: string): number[] | null {
+  const match = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(hex.trim());
+  if (!match) return null;
+
+  let value = match[1];
+  if (value.length === 3) {
+    value = value
+      .split("")
+      .map((c) => c + c)
+      .join("");
+  }
+
+  const num = parseInt(value, 16);
+  return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
+}
+
 export function _setStyleProperty(
   name: string,
   value: any,

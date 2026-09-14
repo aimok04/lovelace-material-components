@@ -131,6 +131,7 @@
     "bold_text": "Estilo negrito para o texto",
     "colorize": "Colorir o controle deslizante com base na cor da luz",
     "percentage_template": "Avançado: substituir o texto de status por um template JS [[[ ]]]",
+    "colorize_color": "Cor hex personalizada a usar (texto simples ou template JS [[[ ]]]) - substitui a cor real da luz",
     "show_arrow": "Mostrar botão de seta (abre a ação de seta configurada)"
   },
   "material_lights_card": {

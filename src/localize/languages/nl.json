@@ -131,6 +131,7 @@
     "bold_text": "Vette tekststijl",
     "colorize": "Schuifregelaar inkleuren op basis van de lichtkleur",
     "percentage_template": "Geavanceerd: statustekst overschrijven met een [[[ ]]] JS-sjabloon",
+    "colorize_color": "Aangepaste hexkleur om te gebruiken (platte tekst of [[[ ]]] JS-sjabloon) - overschrijft de werkelijke kleur van de lamp",
     "show_arrow": "Pijlknop tonen (opent de ingestelde pijlactie)"
   },
   "material_lights_card": {

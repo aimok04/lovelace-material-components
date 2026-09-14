@@ -316,6 +316,23 @@ export class MaterialSliderCardEditor
           />
         </div>
 
+        ${this._config.colorize
+          ? html`
+              <ha-selector
+                style="max-height: 56px"
+                .hass=${this.hass}
+                .selector=${{
+                  text: {},
+                }}
+                .label=${localize("material_slider_card.colorize_color")}
+                .value=${this._config.colorize_color || ""}
+                configValue="colorize_color"
+                @value-changed=${(ev: Event) => _valueChanged(ev, this)}
+                placeholder="#ff5500"
+              ></ha-selector>
+            `
+          : ""}
+
         <div class="switch-row">
           <span class="switch-label"
             >${localize("material_slider_card.show_arrow")}</span

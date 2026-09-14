@@ -137,6 +137,7 @@
     "bold_text": "使用加粗的文本风格",
     "colorize": "根据灯光颜色为滑块着色",
     "percentage_template": "高级：使用 [[[ ]]] JS 模板覆盖状态文本",
+    "colorize_color": "自定义十六进制颜色（纯文本或 [[[ ]]] JS 模板）- 覆盖灯具的真实颜色",
     "show_arrow": "显示箭头按钮（打开已配置的箭头操作）"
   },
   "material_lights_card": {

@@ -131,6 +131,7 @@
     "bold_text": "Texte en gras",
     "colorize": "Colorer le curseur selon la couleur de la lumière",
     "percentage_template": "Avancé : remplacer le texte d'état par un modèle JS [[[ ]]]",
+    "colorize_color": "Couleur hex personnalisée à utiliser (texte simple ou modèle JS [[[ ]]]) - remplace la couleur réelle de la lumière",
     "show_arrow": "Afficher le bouton flèche (ouvre l'action flèche configurée)"
   },
   "material_lights_card": {

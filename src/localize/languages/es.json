@@ -131,6 +131,7 @@
     "bold_text": "Texto en negrita",
     "colorize": "Colorear el control deslizante según el color de la luz",
     "percentage_template": "Avanzado: sobrescribir el texto de estado con una plantilla JS [[[ ]]]",
+    "colorize_color": "Color hex personalizado a usar (texto simple o plantilla JS [[[ ]]]) - sobrescribe el color real de la luz",
     "show_arrow": "Mostrar botón de flecha (abre la acción de flecha configurada)"
   },
   "material_lights_card": {

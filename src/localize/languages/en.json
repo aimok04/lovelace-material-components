@@ -131,6 +131,7 @@
     "bold_text": "Bold style for the text",
     "colorize": "Colorize slider based on the light's color",
     "percentage_template": "Advanced: override the status text with a [[[ ]]] JS template",
+    "colorize_color": "Custom hex color to colorize with (plain, or a [[[ ]]] JS template) - overrides the light's real color",
     "show_arrow": "Show arrow button (opens the configured arrow action)"
   },
   "material_lights_card": {

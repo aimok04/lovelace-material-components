@@ -13,7 +13,11 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { LitElement, html, CSSResult, TemplateResult, css } from "lit";
 import { applyRippleEffect } from "../animations";
 import { material_color } from "../shared/color";
-import { rgbToHue, setSliderColorCard } from "./material-slider-mapper";
+import {
+  hexToRgb,
+  rgbToHue,
+  setSliderColorCard,
+} from "./material-slider-mapper";
 import {
   isDeviceOn,
   isOfflineState,
@@ -442,7 +446,21 @@ export class MaterialSliderCard extends LitElement {
     if (this._state) {
       if (this._status == OnStates.ON) {
         isOn = true;
-        const rgbColor = this._state.attributes?.rgb_color;
+
+        // Optional mock: a custom hex color (plain, or a [[[ ... ]]] template) that stands
+        // in for the entity's real rgb_color, feeding into the exact same hue-derived
+        // fill/background/text calculation below. Falls back to the entity's real color
+        // when unset or invalid.
+        const colorOverride = mapJSFunction(
+          this._config.colorize_color,
+          this._state,
+          this._status,
+          this._hass,
+        );
+        const overrideRgb =
+          typeof colorOverride === "string" ? hexToRgb(colorOverride) : null;
+
+        const rgbColor = overrideRgb ?? this._state.attributes?.rgb_color;
 
         if (rgbColor && this._config.colorize) {
           // Tint fill/background/text as one consistent tonal ramp of the light's hue,

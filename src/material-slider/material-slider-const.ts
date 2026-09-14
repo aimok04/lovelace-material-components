@@ -60,6 +60,7 @@ export interface MaterialSliderCardConfig extends LovelaceCardConfig {
   border_style?: string;
   border_width?: string;
   colorize?: boolean;
+  colorize_color?: string;
   icon?: string;
   show_percentage?: boolean;
   bold_text?: boolean;

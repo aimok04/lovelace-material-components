@@ -131,6 +131,7 @@
     "bold_text": "Text fett formatieren",
     "colorize": "Schieberegler entsprechend der Lichtfarbe einfärben",
     "percentage_template": "Erweitert: Statustext mit einem [[[ ]]] JS-Template überschreiben",
+    "colorize_color": "Benutzerdefinierte Hex-Farbe (einfacher Text oder [[[ ]]] JS-Template) - überschreibt die tatsächliche Lichtfarbe",
     "show_arrow": "Pfeil-Schaltfläche anzeigen (öffnet die konfigurierte Pfeil-Aktion)"
   },
   "material_lights_card": {

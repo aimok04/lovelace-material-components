@@ -131,6 +131,7 @@
     "bold_text": "Fetstilad text",
     "colorize": "Färglägg skjutreglaget baserat på ljusets färg",
     "percentage_template": "Avancerat: skriv över statustexten med en [[[ ]]] JS-mall",
+    "colorize_color": "Anpassad hex-färg att använda (vanlig text eller [[[ ]]] JS-mall) - åsidosätter lampans verkliga färg",
     "show_arrow": "Visa pilknapp (öppnar den konfigurerade pilätgärden)"
   },
   "material_lights_card": {

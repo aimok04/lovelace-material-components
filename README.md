@@ -16,6 +16,7 @@
 > - 🌡️ Climate: tap action is now configurable (was hardcoded to more-info)
 > - 🧹 Removed the "Upgrade to Pro/Ultimate" banner from the card editors
 > - 🧩 `[[[ ... ]]]` JS templating now works for `name` (button/slider/climate), `text_on`/`text_off` (button), `on_text`/`off_text` (lights), plus new `percentage_template` (slider) and `state_template` (climate) fields
+> - 🎨 Slider "colorize" can now be mocked with a custom `colorize_color` (plain hex or `[[[ ]]]` template), overriding the light's real color while still running through the same theme-aware calculation
 
 [![My Home Assistant](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?repository=lovelace-material-components&owner=aimok04&category=Plugin)
 
