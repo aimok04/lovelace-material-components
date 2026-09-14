@@ -94,6 +94,7 @@
   },
   "material_button_card": {
     "name": "实体名称",
+    "custom_color": "自定义十六进制颜色（纯文本或 [[[ ]]] JS 模板）- 覆盖卡片的默认配色方案",
     "control_type": "控制器类型",
     "type": {
       "generic": "通用（开关、按钮…）",

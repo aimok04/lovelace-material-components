@@ -424,7 +424,16 @@ export class MaterialButtonCard extends LitElement {
       state = stateObj && stateObj.state ? stateObj.state : "unavaiable";
     }
 
-    setColorCard(this.style, this._config, isOffline, isOn, theme, state);
+    setColorCard(
+      this.style,
+      this._config,
+      isOffline,
+      isOn,
+      theme,
+      state,
+      stateObj,
+      this.hass,
+    );
 
     return html`
       <ha-card

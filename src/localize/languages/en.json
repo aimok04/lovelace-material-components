@@ -88,6 +88,7 @@
   },
   "material_button_card": {
     "name": "Entity Name",
+    "custom_color": "Custom hex color to colorize with (plain, or a [[[ ]]] JS template) - overrides the card's default color scheme",
     "control_type": "Control Type",
     "type": {
       "generic": "Generic (Switch, Button...)",

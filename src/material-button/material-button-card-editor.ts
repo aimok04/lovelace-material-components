@@ -309,6 +309,19 @@ export class MaterialButtonCardEditor
           placeholder="e.g. Cooler"
         ></ha-selector>
 
+        <ha-selector
+          style="max-height: 56px"
+          .hass=${this.hass}
+          .selector=${{
+            text: {},
+          }}
+          .label=${localize("material_button_card.custom_color")}
+          .value=${this._config.custom_color || ""}
+          configValue="custom_color"
+          @value-changed=${this._valueChanged}
+          placeholder="#ff5500"
+        ></ha-selector>
+
         ${this._config.control_type == ControlType.APP_VERSION ||
         this._config.control_type == ControlType.ACTION
           ? html``

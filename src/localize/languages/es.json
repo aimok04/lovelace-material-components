@@ -88,6 +88,7 @@
   },
   "material_button_card": {
     "name": "Nombre de la entidad",
+    "custom_color": "Color hex personalizado a usar (texto simple o plantilla JS [[[ ]]]) - sobrescribe el esquema de color predeterminado de la tarjeta",
     "control_type": "Tipo de control",
     "type": {
       "generic": "Genérico (Interruptor, Botón...)",

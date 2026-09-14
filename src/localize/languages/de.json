@@ -88,6 +88,7 @@
   },
   "material_button_card": {
     "name": "Entitätsname",
+    "custom_color": "Benutzerdefinierte Hex-Farbe (einfacher Text oder [[[ ]]] JS-Template) - überschreibt das Standard-Farbschema der Karte",
     "control_type": "Steuerungstyp",
     "type": {
       "generic": "Generisch (Schalter, Knopf...)",

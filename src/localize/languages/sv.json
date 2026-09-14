@@ -88,6 +88,7 @@
   },
   "material_button_card": {
     "name": "Entitetsnamn",
+    "custom_color": "Anpassad hex-färg att använda (vanlig text eller [[[ ]]] JS-mall) - åsidosätter kortets standardfärgschema",
     "control_type": "Kontrolltyp",
     "type": {
       "generic": "Generisk (Brytare, Knapp...)",

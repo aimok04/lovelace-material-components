@@ -88,6 +88,7 @@
   },
   "material_button_card": {
     "name": "Entiteitsnaam",
+    "custom_color": "Aangepaste hexkleur om te gebruiken (platte tekst of [[[ ]]] JS-sjabloon) - overschrijft het standaard kleurenschema van de kaart",
     "control_type": "Type bediening",
     "type": {
       "generic": "Algemeen (Schakelaar, Knop...)",

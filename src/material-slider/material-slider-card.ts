@@ -12,12 +12,8 @@ import { state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { LitElement, html, CSSResult, TemplateResult, css } from "lit";
 import { applyRippleEffect } from "../animations";
-import { material_color } from "../shared/color";
-import {
-  hexToRgb,
-  rgbToHue,
-  setSliderColorCard,
-} from "./material-slider-mapper";
+import { hexToRgb, material_color, rgbToHue } from "../shared/color";
+import { setSliderColorCard } from "./material-slider-mapper";
 import {
   isDeviceOn,
   isOfflineState,

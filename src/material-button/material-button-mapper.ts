@@ -1,5 +1,11 @@
 import { getPropertyColor } from "../material-climate/material-climate-mapper";
-import { _setStyleProperty, material_color } from "../shared/color";
+import {
+  _setStyleProperty,
+  hexToRgb,
+  material_color,
+  rgbToHue,
+} from "../shared/color";
+import { mapJSFunction } from "../shared/actions";
 import { ControlType } from "../shared/types";
 import { isNullOrEmpty } from "../shared/utils/utils";
 import { MaterialButtonCardConfig } from "./material-button-const";
@@ -11,6 +17,8 @@ export function setColorCard(
   isOn: boolean,
   theme: string,
   state: string,
+  stateObj?: any,
+  hass?: any,
 ) {
   const offlineOnOffState = isOffline ? "offline" : isOn ? "on" : "off";
   const colorDomain =
@@ -26,27 +34,45 @@ export function setColorCard(
     ? getPropertyColor(state, domain)
     : "default";
 
-  let color: any;
+  // Optional mock: a custom hex color (plain, or a [[[ ... ]]] template) overriding the
+  // card's whole default Material color scheme, using the same hue-derived tonal ramp
+  // (and WCAG-verified S/L ratios) built for the slider's colorize_color.
+  const colorOverride = mapJSFunction(config.custom_color, stateObj, state, hass);
+  const overrideRgb =
+    isOn && !isOffline && typeof colorOverride === "string"
+      ? hexToRgb(colorOverride)
+      : null;
 
-  if (isOffline || (isOn && !config.use_material_color) || !isOn)
-    color = materialColor[theme][offlineOnOffState][colorDomain];
-  else color = materialColor[theme][offlineOnOffState][colorDomain][stateColor];
+  if (overrideRgb) {
+    const hue = rgbToHue(overrideRgb);
+    const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
+    const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
+    const text = `hsl(${hue}, ${textS}%, ${textL}%)`;
 
-  if (!isNullOrEmpty(color)) {
-    _setStyleProperty("--bsc-name-color", color.title, style);
-    _setStyleProperty("--bsc-icon-color", color.icon, style);
-    _setStyleProperty(
-      "--bsc-percentage-color",
-      colorDomain == "climate" ? color.title : color.percentage,
-      style,
-    );
-    _setStyleProperty("--bsc-background", color.background, style);
-    _setStyleProperty(
-      "--bsc-height",
-      config.height || 97,
-      style,
-      (h: any) => `${h}px`,
-    );
-    _setStyleProperty("--bsc-border-radius", config.border_radius, style);
+    _setStyleProperty("--bsc-name-color", text, style);
+    _setStyleProperty("--bsc-icon-color", text, style);
+    _setStyleProperty("--bsc-percentage-color", text, style);
+    _setStyleProperty("--bsc-background", `hsl(${hue}, ${bgS}%, ${bgL}%)`, style);
+  } else {
+    let color: any;
+
+    if (isOffline || (isOn && !config.use_material_color) || !isOn)
+      color = materialColor[theme][offlineOnOffState][colorDomain];
+    else
+      color = materialColor[theme][offlineOnOffState][colorDomain][stateColor];
+
+    if (!isNullOrEmpty(color)) {
+      _setStyleProperty("--bsc-name-color", color.title, style);
+      _setStyleProperty("--bsc-icon-color", color.icon, style);
+      _setStyleProperty(
+        "--bsc-percentage-color",
+        colorDomain == "climate" ? color.title : color.percentage,
+        style,
+      );
+      _setStyleProperty("--bsc-background", color.background, style);
+    }
   }
+
+  _setStyleProperty("--bsc-height", config.height || 97, style, (h: any) => `${h}px`);
+  _setStyleProperty("--bsc-border-radius", config.border_radius, style);
 }

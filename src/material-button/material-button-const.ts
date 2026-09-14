@@ -22,6 +22,7 @@ export interface MaterialButtonCardConfig extends LovelaceCardConfig {
   fix_temperature?: "true" | "false" | "auto";
   use_material_color?: boolean;
   use_default_toggle?: boolean;
+  custom_color?: string;
   tap_action?: ActionConfig;
   hold_action?: ActionConfig;
 }
