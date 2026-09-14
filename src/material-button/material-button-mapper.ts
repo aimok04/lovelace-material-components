@@ -1,5 +1,7 @@
 import { getPropertyColor } from "../material-climate/material-climate-mapper";
 import {
+  ACHROMATIC_BACKGROUND,
+  ACHROMATIC_TEXT,
   _setStyleProperty,
   hexToRgb,
   material_color,
@@ -45,22 +47,26 @@ export function setColorCard(
 
   if (overrideRgb) {
     const hue = rgbToHue(overrideRgb);
-    // Achromatic input (white/black/gray) has no hue - keep the lightness ramp but drop
-    // saturation to 0, otherwise it'd render as red (hue 0's usual meaning).
     const isAchromatic = hue < 0;
-    const displayHue = isAchromatic ? 0 : hue;
-    const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
-    const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
-    const text = `hsl(${displayHue}, ${isAchromatic ? 0 : textS}%, ${textL}%)`;
+
+    let text: string;
+    let background: string;
+    if (isAchromatic) {
+      // Achromatic input (white/black/gray): fixed, theme-independent light-gray
+      // treatment, same reasoning as the slider's colorize_color - see shared/color.ts.
+      text = ACHROMATIC_TEXT;
+      background = ACHROMATIC_BACKGROUND;
+    } else {
+      const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
+      const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
+      text = `hsl(${hue}, ${textS}%, ${textL}%)`;
+      background = `hsl(${hue}, ${bgS}%, ${bgL}%)`;
+    }
 
     _setStyleProperty("--bsc-name-color", text, style);
     _setStyleProperty("--bsc-icon-color", text, style);
     _setStyleProperty("--bsc-percentage-color", text, style);
-    _setStyleProperty(
-      "--bsc-background",
-      `hsl(${displayHue}, ${isAchromatic ? 0 : bgS}%, ${bgL}%)`,
-      style,
-    );
+    _setStyleProperty("--bsc-background", background, style);
   } else {
     let color: any;
 

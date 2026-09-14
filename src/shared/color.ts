@@ -83,6 +83,18 @@ export function hexToRgb(hex: string): number[] | null {
 }
 
 /**
+ * Fixed, theme-independent treatment for an achromatic colorize_color/custom_color (white,
+ * black, or any gray). Chromatic colors dim their fill/background in dark mode because
+ * there's an actual hue to mute - a gray has nothing to mute, so following that pattern
+ * just gives a drab dark-gray blob. This is a deliberately light, soft gray instead (not
+ * pure white) with dark text, same in both themes. Verified >= 4.5:1 WCAG contrast between
+ * text and both the fill and background tones.
+ */
+export const ACHROMATIC_FILL = "hsl(0, 0%, 82%)";
+export const ACHROMATIC_BACKGROUND = "hsl(0, 0%, 90%)";
+export const ACHROMATIC_TEXT = "hsl(0, 0%, 25%)";
+
+/**
  * A color configuration object that defines theme-based styles for Google-like UI components.
  * It supports both **dark** and **light** themes and organizes colors by component state:
  * - **offline**: When the device or service is unavailable

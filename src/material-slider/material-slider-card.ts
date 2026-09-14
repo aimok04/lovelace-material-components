@@ -12,7 +12,14 @@ import { state } from "lit/decorators.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { LitElement, html, CSSResult, TemplateResult, css } from "lit";
 import { applyRippleEffect } from "../animations";
-import { hexToRgb, material_color, rgbToHue } from "../shared/color";
+import {
+  ACHROMATIC_BACKGROUND,
+  ACHROMATIC_FILL,
+  ACHROMATIC_TEXT,
+  hexToRgb,
+  material_color,
+  rgbToHue,
+} from "../shared/color";
 import { setSliderColorCard } from "./material-slider-mapper";
 import {
   isDeviceOn,
@@ -467,21 +474,39 @@ export class MaterialSliderCard extends LitElement {
           // engineered from that palette's hex values and re-verified for >= 4.5:1 WCAG
           // contrast (text vs. both fill and background) across the full hue range.
           const hue = rgbToHue(rgbColor);
-          // Achromatic input (white/black/gray) has no hue - keep the lightness ramp but
-          // drop saturation to 0, otherwise it'd render as red (hue 0's usual meaning).
           const isAchromatic = hue < 0;
-          const displayHue = isAchromatic ? 0 : hue;
-          const [fillS, fillL] = theme === "dark" ? [32, 24] : [100, 76];
-          const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
-          const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
 
-          color = `hsl(${displayHue}, ${isAchromatic ? 0 : fillS}%, ${fillL}%)`;
-          const text = `hsl(${displayHue}, ${isAchromatic ? 0 : textS}%, ${textL}%)`;
+          let text: string;
+          if (isAchromatic) {
+            // Achromatic input (white/black/gray) has no hue. Following the normal
+            // dark-mode-dims-everything pattern here just produces a drab dark-gray blob,
+            // since there's no color to dim in the first place - so this gets its own
+            // fixed, theme-independent light-gray treatment instead: soft and inviting,
+            // not pure white, with dark text for contrast (verified >= 4.5:1 vs both
+            // fill and background).
+            color = ACHROMATIC_FILL;
+            text = ACHROMATIC_TEXT;
+            this.style.setProperty("--bsc-background", ACHROMATIC_BACKGROUND);
+          } else {
+            // Tint fill/background/text as one consistent tonal ramp of the light's hue,
+            // matching the exact saturation/lightness relationship the built-in Material
+            // amber palette uses (material_color.*.on.light) - a raw, fully-saturated bulb
+            // color used directly is much brighter/more saturated than that palette and
+            // reads as glaring, especially in dark mode. [S%, L%] pairs below were reverse
+            // engineered from that palette's hex values and re-verified for >= 4.5:1 WCAG
+            // contrast (text vs. both fill and background) across the full hue range.
+            const [fillS, fillL] = theme === "dark" ? [32, 24] : [100, 76];
+            const [bgS, bgL] = theme === "dark" ? [12, 18] : [90, 89];
+            const [textS, textL] = theme === "dark" ? [90, 78] : [100, 20];
 
-          this.style.setProperty(
-            "--bsc-background",
-            `hsl(${displayHue}, ${isAchromatic ? 0 : bgS}%, ${bgL}%)`,
-          );
+            color = `hsl(${hue}, ${fillS}%, ${fillL}%)`;
+            text = `hsl(${hue}, ${textS}%, ${textL}%)`;
+            this.style.setProperty(
+              "--bsc-background",
+              `hsl(${hue}, ${bgS}%, ${bgL}%)`,
+            );
+          }
+
           this.style.setProperty("--bsc-name-color", text);
           this.style.setProperty("--bsc-icon-color", text);
           this.style.setProperty("--bsc-percentage-color", text);
